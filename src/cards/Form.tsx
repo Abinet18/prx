@@ -10,6 +10,7 @@ import MultiSelectInput from '../Inputs/MultiSelectInput';
 import CheckBox from '../Inputs/CheckBox';
 import CheckBoxes from '../Inputs/CheckBoxes';
 import RadioInput from '../Inputs/RadioInput';
+import SwitchInput from '../Inputs/Switch';
 
 type Props = {
   label?: string;
@@ -65,6 +66,9 @@ const Form = () => {
           onChange={() => {}}
           row
         />
+      </FormLine>
+      <FormLine label={'Interested ?'}>
+        <SwitchInput checked={false} onChange={() => {}} label='Interested' />
       </FormLine>
     </Card>
   );
