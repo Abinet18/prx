@@ -10,6 +10,7 @@ type Props = {
   options: Option[];
   disableClearable?: boolean;
   onChange: (value: Option | null) => void;
+  placeholder?: string;
 };
 
 const SelectInput = ({
@@ -18,6 +19,7 @@ const SelectInput = ({
   onChange,
   options,
   disableClearable,
+  placeholder,
 }: Props) => {
   const classes = selectInputStyles();
   return (
@@ -31,7 +33,7 @@ const SelectInput = ({
         <CustomTextField
           params={params}
           label={label}
-          placeholder={'Select ..'}
+          placeholder={placeholder}
         />
       )}
     />

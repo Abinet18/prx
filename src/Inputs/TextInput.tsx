@@ -7,9 +7,10 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
   rows?: number;
+  placeholder?: string;
 };
 
-const TextInput = ({ label, value, onChange, rows }: Props) => {
+const TextInput = ({ label, value, onChange, rows, placeholder }: Props) => {
   const labelClasses = inputLabelStyles();
   const textInputClasses = textFieldRootStyles();
   return (
@@ -20,6 +21,7 @@ const TextInput = ({ label, value, onChange, rows }: Props) => {
         classes={textInputClasses}
         value={value}
         onChange={(e) => onChange(e.target.value ?? '')}
+        placeholder={placeholder}
       />
     </>
   );

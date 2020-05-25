@@ -5,7 +5,7 @@ import SelectInput from '../Inputs/SelectInput';
 import Card from './Card';
 
 import FormLine from './FormLine';
-import { Option, CheckboxValue } from '../types/types';
+import { FormData, FormField, Option, CheckboxValue } from '../types/types';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
 import CheckBox from '../Inputs/CheckBox';
 import CheckBoxes from '../Inputs/CheckBoxes';
@@ -13,65 +13,77 @@ import RadioInput from '../Inputs/RadioInput';
 import SwitchInput from '../Inputs/Switch';
 
 type Props = {
-  label?: string;
-  value: string;
-  onChange: (value: string) => void;
+  data: FormData;
 };
 
-const optionValues = [
-  'Option1',
-  'Option2',
-  'Option3',
-  'Option4',
-  'Option5',
-  'Option6',
-  'Option7',
-  'Option8',
-];
-const options: Option[] = optionValues.map((option) => {
-  return { value: option, label: option };
-});
-
-const values: CheckboxValue[] = optionValues.map((option) => {
-  return { value: option, checked: false };
-});
-
 const footer = <div>Footer</div>;
-const Form = () => {
+const Form = ({ data }: Props) => {
   return (
-    <Card title={'Form'} xs={8} footer={footer}>
-      <FormLine label={'Name'}>
-        <TextInput value={'test'} onChange={(val) => {}} rows={2} />
-      </FormLine>
-      <FormLine label={'Status'}>
-        <SelectInput value={''} onChange={(val) => {}} options={options} />
-      </FormLine>
-      <FormLine label={'Hobbies'}>
+    <Card title={data.title} xs={8} footer={footer}>
+      {data.fields.map((field) => (
+        <FormLine label={field.label} labelSize={3}>
+          {getInput(field)}
+        </FormLine>
+      ))}
+    </Card>
+  );
+};
+
+const getInput = (field: FormField) => {
+  const options = field.options ?? [];
+  const selectOptions = field.type.toUpperCase().includes('SELECT')
+    ? (options as Option[])
+    : [];
+  const checkboxOptions = field.type.toUpperCase().includes('CHECKBOX')
+    ? (options as CheckboxValue[])
+    : [];
+  const radioOptions =
+    field.type.toUpperCase() === 'RADIO' ? (options as string[]) : [];
+  switch (field.type.toUpperCase()) {
+    case 'TEXT':
+      return (
+        <TextInput
+          value={field.default ?? ''}
+          placeholder={field.placeholder ?? ''}
+          onChange={() => {}}
+        />
+      );
+    case 'SELECT':
+      return (
+        <SelectInput
+          value={''}
+          onChange={(val) => {}}
+          options={selectOptions}
+        />
+      );
+    case 'MULTISELECT':
+      return (
         <MultiSelectInput
           values={[]}
-          onChange={(val) => {}}
-          options={options}
+          onChange={() => {}}
+          options={selectOptions}
         />
-      </FormLine>
-      <FormLine label={'Interested ?'}>
-        <CheckBox checked={false} onChange={() => {}} label='Interested' />
-      </FormLine>
-      <FormLine label={'Interests'}>
-        <CheckBoxes values={values} onChange={() => {}} row />
-      </FormLine>
-      <FormLine label={'Interests'}>
+      );
+    case 'CHECKBOX':
+      return (
+        <CheckBox checked={false} onChange={() => {}} label={field.label} />
+      );
+    case 'CHECKBOXES':
+      return <CheckBoxes values={checkboxOptions} onChange={() => {}} row />;
+    case 'RADIO':
+      return (
         <RadioInput
           selectedValue=''
-          options={optionValues}
+          options={radioOptions}
           onChange={() => {}}
           row
         />
-      </FormLine>
-      <FormLine label={'Interested ?'}>
-        <SwitchInput checked={false} onChange={() => {}} label='Interested' />
-      </FormLine>
-    </Card>
-  );
+      );
+    case 'SWITCH':
+      return (
+        <SwitchInput checked={false} onChange={() => {}} label={field.label} />
+      );
+  }
 };
 
 export default Form;

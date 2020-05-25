@@ -54,7 +54,7 @@ export const textInputStyles = makeStyles({
 
 export const cardStyles = makeStyles({
   root: {
-    margin: 8,
+    margin: '16px auto',
     borderRadius: 10,
     border: `1px solid ${grayColors[12]}`,
     ...greenBlueBkg,

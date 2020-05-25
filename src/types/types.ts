@@ -23,3 +23,17 @@ export type CheckboxValue = {
   value: string;
   checked: boolean;
 };
+
+export type FormField = {
+  name: string;
+  label: string;
+  placeholder?: string;
+  type: string;
+  options?: string[] | Option[] | CheckboxValue[];
+  default?: string;
+};
+
+export type FormData = {
+  title: string;
+  fields: FormField[];
+};
