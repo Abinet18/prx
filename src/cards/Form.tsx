@@ -5,8 +5,11 @@ import SelectInput from '../Inputs/SelectInput';
 import Card from './Card';
 
 import FormLine from './FormLine';
-import { Option } from '../types/types';
+import { Option, CheckboxValue } from '../types/types';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
+import CheckBox from '../Inputs/CheckBox';
+import CheckBoxes from '../Inputs/CheckBoxes';
+import RadioInput from '../Inputs/RadioInput';
 
 type Props = {
   label?: string;
@@ -17,6 +20,10 @@ type Props = {
 const optionValues = ['Option1', 'Option2', 'Option3', 'Option4'];
 const options: Option[] = optionValues.map((option) => {
   return { value: option, label: option };
+});
+
+const values: CheckboxValue[] = optionValues.map((option) => {
+  return { value: option, checked: false };
 });
 
 const footer = <div>Footer</div>;
@@ -34,6 +41,19 @@ const Form = () => {
           values={[]}
           onChange={(val) => {}}
           options={options}
+        />
+      </FormLine>
+      <FormLine label={'Interested ?'}>
+        <CheckBox checked={false} onChange={() => {}} label='Interested' />
+      </FormLine>
+      <FormLine label={'Interests'}>
+        <CheckBoxes values={values} onChange={() => {}} />
+      </FormLine>
+      <FormLine label={'Interests'}>
+        <RadioInput
+          selectedValue=''
+          options={optionValues}
+          onChange={() => {}}
         />
       </FormLine>
     </Card>

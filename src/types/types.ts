@@ -18,3 +18,8 @@ export type Option = {
   value: string;
   label: string;
 };
+
+export type CheckboxValue = {
+  value: string;
+  checked: boolean;
+};

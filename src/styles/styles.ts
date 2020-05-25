@@ -31,7 +31,6 @@ export const textInputStyles = makeStyles({
 
 export const cardStyles = makeStyles({
   root: {
-    padding: 8,
     margin: 8,
     borderRadius: 10,
     border: `1px solid ${grayColors[12]}`,
@@ -43,7 +42,7 @@ export const cardStyles = makeStyles({
     fontWeight: 600,
     textAlign: 'center',
     backgroundColor: grayColors[11],
-    margin: 8,
+
     padding: 8,
   },
   body: {
@@ -56,7 +55,7 @@ export const cardStyles = makeStyles({
     ...defaultFont,
     width: '100%',
     backgroundColor: grayColors[11],
-    margin: 8,
+
     padding: 8,
   },
 });
@@ -104,4 +103,13 @@ export const textFieldLabelStyles = makeStyles({
     },
   },
   focused: {},
+});
+
+export const checkboxStyles = makeStyles({
+  root: {
+    ...defaultFont,
+  },
+  label: {
+    ...defaultFont,
+  },
 });
