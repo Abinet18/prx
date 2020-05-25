@@ -1,20 +1,22 @@
 import React from 'react';
 import { Input, InputLabel } from '@material-ui/core';
-import { inputLabelStyles, textInputStyles } from '../styles/styles';
+import { inputLabelStyles, textFieldRootStyles } from '../styles/styles';
 
 type Props = {
   label?: string;
   value: string;
   onChange: (value: string) => void;
+  rows?: number;
 };
 
-const TextInput = ({ label, value, onChange }: Props) => {
+const TextInput = ({ label, value, onChange, rows }: Props) => {
   const labelClasses = inputLabelStyles();
-  const textInputClasses = textInputStyles();
+  const textInputClasses = textFieldRootStyles();
   return (
     <>
       <InputLabel classes={labelClasses}>{label}</InputLabel>
       <Input
+        rows={rows}
         classes={textInputClasses}
         value={value}
         onChange={(e) => onChange(e.target.value ?? '')}

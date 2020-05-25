@@ -31,7 +31,7 @@ const Form = () => {
   return (
     <Card title={'Form'} xs={8} footer={footer}>
       <FormLine label={'Name'}>
-        <TextInput value={'test'} onChange={(val) => {}} />
+        <TextInput value={'test'} onChange={(val) => {}} rows={2} />
       </FormLine>
       <FormLine label={'Status'}>
         <SelectInput value={''} onChange={(val) => {}} options={options} />

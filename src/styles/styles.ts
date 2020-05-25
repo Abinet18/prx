@@ -1,6 +1,29 @@
 import { makeStyles } from '@material-ui/core';
-import { grayColors, primaryColors } from '../constants/Constants';
+import {
+  grayColors,
+  primaryColors,
+  greenColors,
+  redColors,
+  blueColors,
+} from '../constants/Constants';
 
+const greenBkg = {
+  background: `linear-gradient(45deg, 
+        ${greenColors[0]},${greenColors[9]})`,
+};
+const redBkg = {
+  background: `linear-gradient(45deg, 
+          ${redColors[0]},${redColors[9]})`,
+};
+const blueBkg = {
+  background: `linear-gradient(45deg, 
+            ${blueColors[0]},${blueColors[9]})`,
+};
+
+const greenBlueBkg = {
+  background: `linear-gradient(45deg, 
+              ${blueColors[0]},${greenColors[0]})`,
+};
 const defaultFont = {
   color: grayColors[4],
   fontSize: '14px',
@@ -34,15 +57,14 @@ export const cardStyles = makeStyles({
     margin: 8,
     borderRadius: 10,
     border: `1px solid ${grayColors[12]}`,
-    backgroundColor: grayColors[13],
+    ...greenBlueBkg,
     overflow: 'hidden',
   },
   header: {
     ...defaultFont,
     fontWeight: 600,
     textAlign: 'center',
-    backgroundColor: grayColors[11],
-
+    ...greenBkg,
     padding: 8,
   },
   body: {
@@ -54,8 +76,7 @@ export const cardStyles = makeStyles({
   footer: {
     ...defaultFont,
     width: '100%',
-    backgroundColor: grayColors[11],
-
+    ...greenBkg,
     padding: 8,
   },
 });
@@ -75,8 +96,8 @@ export const selectInputStyles = makeStyles({
 
 export const textFieldRootStyles = makeStyles({
   root: {
+    width: '100%',
     ...defaultFont,
-    paddingBottom: 4,
     '&:focused': {
       color: grayColors[0],
     },
@@ -87,11 +108,19 @@ export const textFieldRootStyles = makeStyles({
       transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
     },
     '&:before': {
-      borderBottom: `1px solid ${grayColors[4]}`,
+      borderBottom: `.5px solid ${grayColors[10]}`,
     },
     '&:hover:not(:disabled):before': {
-      borderBottom: `1px solid ${grayColors[4]}`,
+      borderBottom: `1px solid ${primaryColors[0]}`,
     },
+  },
+});
+
+export const chipClasses = makeStyles({
+  root: {
+    width: '100%',
+    ...defaultFont,
+    ...greenBkg,
   },
 });
 
