@@ -11,6 +11,7 @@ import CheckBox from '../Inputs/CheckBox';
 import CheckBoxes from '../Inputs/CheckBoxes';
 import RadioInput from '../Inputs/RadioInput';
 import SwitchInput from '../Inputs/Switch';
+import DateInput from '../Inputs/DateInput';
 
 type Props = {
   data: FormData;
@@ -83,6 +84,8 @@ const getInput = (field: FormField) => {
       return (
         <SwitchInput checked={false} onChange={() => {}} label={field.label} />
       );
+    case 'DATE':
+      return <DateInput selectedDate={null} onChange={() => {}} label={''} />;
   }
 };
 

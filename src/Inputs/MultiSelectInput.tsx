@@ -35,6 +35,7 @@ const MultiSelectInput = ({
           placeholder={'Select ..'}
         />
       )}
+      filterSelectedOptions={true}
     />
   );
 };

@@ -5,6 +5,7 @@ import {
   greenColors,
   redColors,
   blueColors,
+  whiteColor,
 } from '../constants/Constants';
 
 const greenBkg = {
@@ -140,5 +141,26 @@ export const checkboxStyles = makeStyles({
   },
   label: {
     ...defaultFont,
+  },
+});
+
+export const dateStyles = makeStyles({
+  datePicker: {
+    padding: '6px 0',
+    width: '100%',
+    background: 'none',
+    border: 'none',
+    outline: 'none',
+    ...defaultFont,
+    borderBottomColor: grayColors[10],
+    borderBottomStyle: 'solid',
+    borderBottomWidth: 0.5,
+    '&:focus': {
+      borderBottomColor: primaryColors[0],
+      borderBottomWidth: 2,
+    },
+  },
+  wrapper: {
+    width: '100%',
   },
 });
