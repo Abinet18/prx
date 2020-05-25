@@ -11,6 +11,7 @@ type Props = {
   selectedValue: string;
   onChange: (value: string) => void;
   label?: string;
+  row?: boolean;
   disabled?: boolean;
 };
 
@@ -19,13 +20,14 @@ const RadioInput = ({
   onChange,
   label,
   selectedValue,
+  row,
   disabled,
 }: Props) => {
   const classes = checkboxStyles();
   return (
     <FormControl className={classes.root}>
       <FormLabel>{label}</FormLabel>
-      <RadioGroup aria-label={label} value={selectedValue}>
+      <RadioGroup aria-label={label} value={selectedValue} row={row}>
         {options.map((value: string, index: number) => (
           <FormControlLabel
             classes={classes}

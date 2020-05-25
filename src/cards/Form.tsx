@@ -17,7 +17,16 @@ type Props = {
   onChange: (value: string) => void;
 };
 
-const optionValues = ['Option1', 'Option2', 'Option3', 'Option4'];
+const optionValues = [
+  'Option1',
+  'Option2',
+  'Option3',
+  'Option4',
+  'Option5',
+  'Option6',
+  'Option7',
+  'Option8',
+];
 const options: Option[] = optionValues.map((option) => {
   return { value: option, label: option };
 });
@@ -47,13 +56,14 @@ const Form = () => {
         <CheckBox checked={false} onChange={() => {}} label='Interested' />
       </FormLine>
       <FormLine label={'Interests'}>
-        <CheckBoxes values={values} onChange={() => {}} />
+        <CheckBoxes values={values} onChange={() => {}} row />
       </FormLine>
       <FormLine label={'Interests'}>
         <RadioInput
           selectedValue=''
           options={optionValues}
           onChange={() => {}}
+          row
         />
       </FormLine>
     </Card>

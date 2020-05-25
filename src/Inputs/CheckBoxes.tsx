@@ -13,14 +13,15 @@ type Props = {
   onChange: (index: number, checked: boolean) => void;
   label?: string;
   disabled?: boolean;
+  row?: boolean;
 };
 
-const CheckBoxes = ({ values, onChange, label, disabled }: Props) => {
+const CheckBoxes = ({ values, onChange, label, row, disabled }: Props) => {
   const classes = checkboxStyles();
   return (
     <FormControl className={classes.root}>
       <FormLabel component='legend'>{label}</FormLabel>
-      <FormGroup>
+      <FormGroup row={row}>
         {values.map((value: CheckboxValue, index: number) => (
           <FormControlLabel
             classes={classes}
