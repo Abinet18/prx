@@ -57,7 +57,7 @@ export const cardStyles = makeStyles({
   root: {
     margin: '16px auto',
     borderRadius: 10,
-    border: `1px solid ${grayColors[12]}`,
+    /*border: `.5px solid ${greenColors[2]}`*/
     ...greenBlueBkg,
     overflow: 'hidden',
   },
@@ -156,6 +156,7 @@ export const dateStyles = makeStyles({
     borderBottomStyle: 'solid',
     borderBottomWidth: 0.5,
     '&:focus': {
+      transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
       borderBottomColor: primaryColors[0],
       borderBottomWidth: 2,
     },

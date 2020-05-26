@@ -9,7 +9,7 @@ type Props = {
   value: string;
   options: Option[];
   disableClearable?: boolean;
-  onChange: (value: Option | null) => void;
+  onChange: (value: string) => void;
   placeholder?: string;
 };
 
@@ -22,12 +22,19 @@ const SelectInput = ({
   placeholder,
 }: Props) => {
   const classes = selectInputStyles();
+  const selectedOption = options.find((option) => option.value === value);
+  const _onChange = (option: Option | null) => {
+    onChange(option?.value ?? '');
+  };
   return (
     <Autocomplete
+      value={selectedOption}
       disableClearable={disableClearable}
       options={options}
       getOptionLabel={(option: Option) => option.label}
-      onChange={(event, value) => onChange(value)}
+      onChange={(event, option) => {
+        _onChange(option);
+      }}
       className={classes.root}
       renderInput={(params) => (
         <CustomTextField

@@ -6,34 +6,51 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { checkboxStyles } from '../styles/styles';
-import { CheckboxValue } from '../types/types';
+import { Option } from '../types/types';
 
 type Props = {
-  values: CheckboxValue[];
-  onChange: (index: number, checked: boolean) => void;
+  options: Option[];
+  selectedValsStr: string;
+  onChange: (selectedValStr: string) => void;
   label?: string;
   disabled?: boolean;
   row?: boolean;
 };
 
-const CheckBoxes = ({ values, onChange, label, row, disabled }: Props) => {
+const CheckBoxes = ({
+  options,
+  onChange,
+  label,
+  row,
+  disabled,
+  selectedValsStr,
+}: Props) => {
   const classes = checkboxStyles();
+  const selectedValues = selectedValsStr.split(',');
+  const _onChange = (value: string, checked: boolean) => {
+    if (checked && !selectedValues.includes(value)) {
+      onChange([...selectedValues, value].join(','));
+    } else if (!checked && selectedValues.includes(value)) {
+      const newSelectedValues = selectedValues.filter((v) => v !== value);
+      onChange(newSelectedValues.join(','));
+    }
+  };
   return (
     <FormControl className={classes.root}>
       <FormLabel component='legend'>{label}</FormLabel>
       <FormGroup row={row}>
-        {values.map((value: CheckboxValue, index: number) => (
+        {options.map((option: Option, index: number) => (
           <FormControlLabel
             classes={classes}
             control={
               <Checkbox
-                checked={value.checked}
+                checked={selectedValues.includes(option.value)}
                 onChange={(event) => {
-                  onChange(index, event.target.checked);
+                  _onChange(option.value, event.target.checked);
                 }}
               />
             }
-            label={value.value}
+            label={option.label}
           />
         ))}
       </FormGroup>

@@ -19,17 +19,17 @@ export type Option = {
   label: string;
 };
 
-export type CheckboxValue = {
-  value: string;
-  checked: boolean;
-};
+// export type CheckboxValue = {
+//   value: string;
+//   checked: boolean;
+// };
 
 export type FormField = {
   name: string;
   label: string;
   placeholder?: string;
   type: string;
-  options?: string[] | Option[] | CheckboxValue[];
+  options?: string[] | Option[];
   default?: string;
 };
 

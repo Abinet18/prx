@@ -6,27 +6,37 @@ import CustomTextField from './CustomTextField';
 
 type Props = {
   label?: string;
-  values: Option[];
+  selectedValsStr: string;
   options: Option[];
   disableClearable?: boolean;
-  onChange: (values: Option[] | null) => void;
+  onChange: (value: string) => void;
 };
 
 const MultiSelectInput = ({
   label,
-  values,
+  selectedValsStr,
   onChange,
   options,
   disableClearable,
 }: Props) => {
   const classes = selectInputStyles();
+  const selectedValues = selectedValsStr.split(',');
+  const selectedOptions = options.filter((option) =>
+    selectedValues.includes(option.value),
+  );
+  const _onChange = (values: Option[]) => {
+    onChange(values.map((option) => option.value).join(','));
+  };
   return (
     <Autocomplete
       disableClearable={disableClearable}
       multiple
+      value={selectedOptions}
       options={options}
       getOptionLabel={(option: Option) => option.label}
-      onChange={(event, values) => onChange(values)}
+      onChange={(event, values) => {
+        _onChange(values);
+      }}
       className={classes.root}
       renderInput={(params) => (
         <CustomTextField
