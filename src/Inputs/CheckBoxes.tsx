@@ -5,7 +5,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { checkboxStyles } from '../styles/styles';
+import { checkboxStyles, formControlLabelStyles } from '../styles/styles';
 import { Option } from '../types/types';
 
 type Props = {
@@ -25,7 +25,8 @@ const CheckBoxes = ({
   disabled,
   selectedValsStr,
 }: Props) => {
-  const classes = checkboxStyles();
+  const classes = formControlLabelStyles();
+  const checkboxClasses = checkboxStyles();
   const selectedValues = selectedValsStr.split(',');
   const _onChange = (value: string, checked: boolean) => {
     if (checked && !selectedValues.includes(value)) {
@@ -48,6 +49,8 @@ const CheckBoxes = ({
                 onChange={(event) => {
                   _onChange(option.value, event.target.checked);
                 }}
+                classes={checkboxClasses}
+                color='primary'
               />
             }
             label={option.label}

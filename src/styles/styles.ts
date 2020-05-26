@@ -136,6 +136,18 @@ export const textFieldLabelStyles = makeStyles({
 });
 
 export const checkboxStyles = makeStyles({
+  colorPrimary: {
+    color: primaryColors[0],
+    '&$checked': {
+      color: primaryColors[0],
+    },
+  },
+  checked: {
+    color: primaryColors[0],
+  },
+});
+
+export const formControlLabelStyles = makeStyles({
   root: {
     ...defaultFont,
   },

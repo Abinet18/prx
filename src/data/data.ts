@@ -71,5 +71,19 @@ export const form = {
         { value: 'Biking', label: 'Biking' },
       ],
     },
+    {
+      name: 'skills',
+      label: 'Skills',
+      type: 'CheckBoxes',
+      default: '',
+      options: [
+        { value: 'Software Development', label: 'Software Development' },
+        { value: 'CSS', label: 'CSS' },
+        { value: 'React', label: 'React' },
+        { value: 'Java', label: 'Java' },
+        { value: 'Kafka', label: 'Kafka' },
+        { value: 'Docker', label: 'Docker' },
+      ],
+    },
   ],
 };

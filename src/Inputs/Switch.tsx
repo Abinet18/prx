@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import { checkboxStyles } from '../styles/styles';
+import { checkboxStyles, formControlLabelStyles } from '../styles/styles';
 
 type Props = {
   checked?: 'Y' | 'N';
@@ -10,14 +10,21 @@ type Props = {
 };
 
 const SwitchInput = ({ checked, onChange, label }: Props) => {
-  const classes = checkboxStyles();
+  const classes = formControlLabelStyles();
+  const checkboxClasses = checkboxStyles();
   const _onChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.checked ? 'Y' : 'N');
   };
   return (
     <FormControlLabel
       classes={classes}
-      control={<Switch checked={checked === 'Y'} onChange={_onChange} />}
+      control={
+        <Switch
+          checked={checked === 'Y'}
+          onChange={_onChange}
+          classes={checkboxClasses}
+        />
+      }
       label={label}
     />
   );

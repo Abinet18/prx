@@ -3,7 +3,7 @@ import React from 'react';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { checkboxStyles } from '../styles/styles';
+import { checkboxStyles, formControlLabelStyles } from '../styles/styles';
 import { RadioGroup, Radio } from '@material-ui/core';
 
 type Props = {
@@ -23,7 +23,8 @@ const RadioInput = ({
   row,
   disabled,
 }: Props) => {
-  const classes = checkboxStyles();
+  const classes = formControlLabelStyles();
+  const checkboxClasses = checkboxStyles();
   return (
     <FormControl className={classes.root}>
       <FormLabel>{label}</FormLabel>
@@ -38,6 +39,8 @@ const RadioInput = ({
                   onChange(event.target.value);
                 }}
                 value={value}
+                classes={checkboxClasses}
+                color='primary'
               />
             }
             label={value}

@@ -3,7 +3,7 @@ import React, { ChangeEvent } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { checkboxStyles } from '../styles/styles';
+import { checkboxStyles, formControlLabelStyles } from '../styles/styles';
 
 type Props = {
   checked?: 'Y' | 'N';
@@ -13,7 +13,8 @@ type Props = {
 };
 
 const CheckBox = ({ checked, onChange, label, disabled }: Props) => {
-  const classes = checkboxStyles();
+  const classes = formControlLabelStyles();
+  const checkboxClasses = checkboxStyles();
   const _onChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.checked ? 'Y' : 'N');
   };
@@ -21,7 +22,14 @@ const CheckBox = ({ checked, onChange, label, disabled }: Props) => {
     <FormControl className={classes.root}>
       <FormControlLabel
         classes={classes}
-        control={<Checkbox checked={checked === 'Y'} onChange={_onChange} />}
+        control={
+          <Checkbox
+            checked={checked === 'Y'}
+            onChange={_onChange}
+            classes={checkboxClasses}
+            color='primary'
+          />
+        }
         label={label}
       />
     </FormControl>
