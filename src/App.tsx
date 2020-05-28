@@ -1,8 +1,7 @@
 import React from 'react';
-import Form from './cards/Form';
-import { form } from './data/data';
-function App() {
-  return <Form data={form} />;
-}
+import Profiles from './cards/Profiles';
+const App = () => {
+  return <Profiles />;
+};
 
 export default App;

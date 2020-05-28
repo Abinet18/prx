@@ -7,6 +7,7 @@ import {
   blueColors,
   whiteColor,
 } from '../constants/Constants';
+import { findByLabelText } from '@testing-library/react';
 
 const greenBkg = {
   background: `linear-gradient(45deg, 
@@ -54,10 +55,13 @@ export const textInputStyles = makeStyles({
 });
 
 export const cardStyles = makeStyles({
+  container: {
+    margin: 'auto',
+    padding: 0,
+  },
   root: {
     margin: '16px auto',
     borderRadius: 10,
-    /*border: `.5px solid ${greenColors[2]}`*/
     ...greenBlueBkg,
     overflow: 'hidden',
   },
@@ -75,10 +79,12 @@ export const cardStyles = makeStyles({
     padding: 8,
   },
   footer: {
+    display: 'flex',
     ...defaultFont,
     width: '100%',
     ...greenBkg,
     padding: 8,
+    justifyContent: 'flex-end',
   },
 });
 
@@ -175,5 +181,20 @@ export const dateStyles = makeStyles({
   },
   wrapper: {
     width: '100%',
+  },
+});
+
+export const buttonStyles = makeStyles({
+  primary: {
+    color: primaryColors[0],
+    fontWeight: 400,
+    textTransform: 'none',
+    ...greenBlueBkg,
+    padding: '4px 16px',
+    cursor: 'pointer',
+    '&:hover': {
+      ...greenBkg,
+      color: whiteColor,
+    },
   },
 });

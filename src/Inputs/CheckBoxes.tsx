@@ -42,6 +42,7 @@ const CheckBoxes = ({
       <FormGroup row={row}>
         {options.map((option: Option, index: number) => (
           <FormControlLabel
+            key={index}
             classes={classes}
             control={
               <Checkbox

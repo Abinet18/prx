@@ -31,6 +31,7 @@ const RadioInput = ({
       <RadioGroup aria-label={label} value={selectedValue} row={row}>
         {options.map((value: string, index: number) => (
           <FormControlLabel
+            key={index}
             classes={classes}
             control={
               <Radio

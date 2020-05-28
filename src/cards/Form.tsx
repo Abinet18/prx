@@ -5,25 +5,32 @@ import SelectInput from '../Inputs/SelectInput';
 import Card from './Card';
 
 import FormLine from './FormLine';
-import { FormData, FormField, Option } from '../types/types';
+import { FormData, FormField, Option, KeyValue } from '../types/types';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
 import CheckBox from '../Inputs/CheckBox';
 import CheckBoxes from '../Inputs/CheckBoxes';
 import RadioInput from '../Inputs/RadioInput';
 import SwitchInput from '../Inputs/Switch';
 import DateInput from '../Inputs/DateInput';
+import SubmitButton from '../Buttons/SubmitButton';
+import { useStore } from '../store/store';
 
 type Props = {
   data: FormData;
+  onSubmit: (profile: KeyValue[]) => void;
 };
 
-const footer = <div>Footer</div>;
-const Form = ({ data }: Props) => {
+const Form = ({ data, onSubmit }: Props) => {
   const values = data.fields.map((field) => {
-    return { name: field.name, value: field.default };
+    return { key: field.name, value: field.default };
   });
 
-  const [formValues, setFormValues] = useState(values);
+  const [formValues, setFormValues] = useStore(['newProfile'], values);
+
+  const _onSubmit = () => {
+    onSubmit(formValues);
+  };
+  const footer = <SubmitButton label='Submit' onClick={_onSubmit} />;
   const _onChange = (index: number, value: string) => {
     formValues[index].value = value;
     setFormValues([...formValues]);
@@ -126,9 +133,9 @@ const Form = ({ data }: Props) => {
   };
 
   return (
-    <Card title={data.title} xs={8} footer={footer}>
+    <Card title={data.title} xs={12} footer={footer}>
       {data.fields.map((field, index) => (
-        <FormLine label={field.label} labelSize={3}>
+        <FormLine key={index} label={field.label} labelSize={3}>
           {getInput(field, index)}
         </FormLine>
       ))}

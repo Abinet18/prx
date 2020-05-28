@@ -9,7 +9,7 @@ type Props = {
   xs?: XS;
   title?: string;
   children: any;
-  footer: any;
+  footer?: any;
 };
 
 const Card = ({ xs, title, children, footer }: Props) => {
