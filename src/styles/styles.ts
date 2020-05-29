@@ -112,6 +112,18 @@ export const cardStyles = makeStyles({
     ...greenBlueBkg,
     overflow: 'hidden',
   },
+  profilelist: {
+    fontWeight: 500,
+    padding: 8,
+    textOverflow: 'word-wrap',
+  },
+  profilequote: {
+    fontStyle: 'italic',
+    padding: 8,
+  },
+  profileitem: {
+    padding: 8,
+  },
 });
 
 export const formStyles = makeStyles({

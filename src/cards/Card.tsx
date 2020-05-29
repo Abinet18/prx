@@ -4,7 +4,6 @@ import GridContainer from '../Views/GridContainer';
 import GridItem from '../Views/GridItem';
 import { XS, AlignItems } from '../types/types';
 import { cardStyles } from '../styles/styles';
-import cx from 'classnames';
 
 type Props = {
   xs?: XS;
