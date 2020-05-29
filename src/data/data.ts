@@ -1,4 +1,6 @@
-export const form = {
+import { ProfileType, ProfileFormData } from '../types/types';
+
+export const profileForm: ProfileFormData = {
   title: 'User Profile Form',
   fields: [
     {
@@ -86,4 +88,16 @@ export const form = {
       ],
     },
   ],
+};
+
+export const emptyProfile: ProfileType = {
+  name: '',
+  gender: '',
+  bdate: '',
+  jtitle: '',
+  cname: '',
+  summary: '',
+  mstatus: '',
+  interests: '',
+  skills: '',
 };

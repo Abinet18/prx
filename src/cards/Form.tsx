@@ -1,142 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import TextInput from '../Inputs/TextInput';
-import SelectInput from '../Inputs/SelectInput';
 import Card from './Card';
 
 import FormLine from './FormLine';
-import { FormData, FormField, Option, KeyValue } from '../types/types';
-import MultiSelectInput from '../Inputs/MultiSelectInput';
-import CheckBox from '../Inputs/CheckBox';
-import CheckBoxes from '../Inputs/CheckBoxes';
-import RadioInput from '../Inputs/RadioInput';
-import SwitchInput from '../Inputs/Switch';
-import DateInput from '../Inputs/DateInput';
+import { ProfileFormData } from '../types/types';
+
 import SubmitButton from '../Buttons/SubmitButton';
-import { useStore } from '../store/store';
+import { cardStyles } from '../styles/styles';
+import InputField from './InputField';
 
 type Props = {
-  data: FormData;
-  onSubmit: (profile: KeyValue[]) => void;
+  data: ProfileFormData;
+  onSubmit: () => void;
+  path?: string[];
 };
 
-const Form = ({ data, onSubmit }: Props) => {
-  const values = data.fields.map((field) => {
-    return { key: field.name, value: field.default };
-  });
+const Form = ({ data, onSubmit, path }: Props) => {
+  const classes = cardStyles();
+  const curPath = path || ['newProfile'];
 
-  const [formValues, setFormValues] = useStore(['newProfile'], values);
-
-  const _onSubmit = () => {
-    onSubmit(formValues);
-  };
-  const footer = <SubmitButton label='Submit' onClick={_onSubmit} />;
-  const _onChange = (index: number, value: string) => {
-    formValues[index].value = value;
-    setFormValues([...formValues]);
-  };
-
-  const getInput = (field: FormField, index: number) => {
-    const options = field.options ?? [];
-    const selectOptions = field.type.toUpperCase().includes('SELECT')
-      ? (options as Option[])
-      : [];
-    const checkboxOptions = field.type.toUpperCase().includes('CHECKBOX')
-      ? (options as Option[])
-      : [];
-    const radioOptions =
-      field.type.toUpperCase() === 'RADIO' ? (options as string[]) : [];
-    switch (field.type.toUpperCase()) {
-      case 'TEXT':
-        return (
-          <TextInput
-            value={formValues[index].value ?? ''}
-            placeholder={field.placeholder ?? ''}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-          />
-        );
-      case 'SELECT':
-        return (
-          <SelectInput
-            value={formValues[index].value ?? ''}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            options={selectOptions}
-          />
-        );
-      case 'MULTISELECT':
-        return (
-          <MultiSelectInput
-            selectedValsStr={formValues[index].value ?? ''}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            options={selectOptions}
-          />
-        );
-      case 'CHECKBOX':
-        return (
-          <CheckBox
-            checked={formValues[index].value === 'Y' ? 'Y' : 'N'}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            label={field.label}
-          />
-        );
-      case 'CHECKBOXES':
-        return (
-          <CheckBoxes
-            options={checkboxOptions}
-            selectedValsStr={formValues[index].value ?? ''}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            row
-          />
-        );
-      case 'RADIO':
-        return (
-          <RadioInput
-            selectedValue={formValues[index].value ?? ''}
-            options={radioOptions}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            row
-          />
-        );
-      case 'SWITCH':
-        return (
-          <SwitchInput
-            checked={formValues[index].value === 'Y' ? 'Y' : 'N'}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            label={field.label}
-          />
-        );
-      case 'DATE':
-        return (
-          <DateInput
-            selectedDate={formValues[index].value ?? ''}
-            onChange={(value) => {
-              _onChange(index, value);
-            }}
-            label={''}
-          />
-        );
-    }
-  };
+  const header = <div className={classes.header}>{data.title}</div>;
+  const footer = (
+    <div className={classes.footerNoBkg}>
+      <SubmitButton label='Submit' onClick={onSubmit} />
+    </div>
+  );
 
   return (
-    <Card title={data.title} xs={12} footer={footer}>
+    <Card header={header} xs={12} footer={footer} className={classes.root}>
       {data.fields.map((field, index) => (
         <FormLine key={index} label={field.label} labelSize={3}>
-          {getInput(field, index)}
+          <InputField field={field} path={curPath} />
         </FormLine>
       ))}
     </Card>

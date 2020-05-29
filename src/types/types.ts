@@ -13,8 +13,8 @@ export type Option = {
 //   checked: boolean;
 // };
 
-export type FormField = {
-  name: string;
+export type ProfileFormField = {
+  name: keyof ProfileType;
   label: string;
   placeholder?: string;
   type: string;
@@ -22,9 +22,9 @@ export type FormField = {
   default?: string;
 };
 
-export type FormData = {
+export type ProfileFormData = {
   title: string;
-  fields: FormField[];
+  fields: ProfileFormField[];
 };
 
 export type StyleColor =
@@ -35,3 +35,23 @@ export type StyleColor =
   | undefined;
 
 export type KeyValue = { key: string; value?: string };
+
+export type AlignItems =
+  | 'stretch'
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'baseline'
+  | undefined;
+
+export type ProfileType = {
+  name: string;
+  gender: string;
+  bdate: string;
+  jtitle: string;
+  cname: string;
+  summary: string;
+  mstatus: string;
+  interests: string;
+  skills: string;
+};

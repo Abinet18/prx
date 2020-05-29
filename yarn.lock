@@ -1504,6 +1504,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/classnames@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.10.tgz#cc658ca319b6355399efc1f5b9e818f1a24bf999"
+  integrity sha512-1UzDldn9GfYYEsWWnn/P4wkTlkZDH7lDb0wBMGbtIQc9zXEQq7FlKBdZUn6OBqD8sKZZ2RQO2mAjGpXiDGoRmQ==
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -3535,6 +3540,14 @@ csstype@^2.2.0, csstype@^2.5.2, csstype@^2.6.5, csstype@^2.6.7:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
   integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
 
+cx@^20.5.5:
+  version "20.5.5"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-20.5.5.tgz#c8e69a419134ca00983c31e9485ddc01bcfaf3b8"
+  integrity sha512-IACDKnCH3l22W926I6qQdSeVJz+Tgi5UmCAFJiw6ylmOKoShFm6ky+0cQlkDav0MJOp3fuyRhHlN/XyMpRDL3A==
+  dependencies:
+    intl-io "^0.3.0"
+    route-parser "^0.0.5"
+
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -5419,6 +5432,11 @@ internal-slot@^1.0.2:
     es-abstract "^1.17.0-next.1"
     has "^1.0.3"
     side-channel "^1.0.2"
+
+intl-io@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/intl-io/-/intl-io-0.3.0.tgz#2207e6f90377241e322b3d5dc100633e3fb2bff9"
+  integrity sha512-fsiAEyhgrGLI1B7wB0/hMVxBDlc4IprTmrTibxOuUkHtY6nf/Mg6O0BzRXq2T9B7v2PqMtyrcdGqu5kEUgksMA==
 
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
@@ -9266,6 +9284,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+route-parser@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/route-parser/-/route-parser-0.0.5.tgz#7d1d09d335e49094031ea16991a4a79b01bbe1f4"
+  integrity sha1-fR0J0zXkkJQDHqFpkaSnmwG74fQ=
 
 rsvp@^4.8.4:
   version "4.8.5"

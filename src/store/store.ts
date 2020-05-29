@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { setIn, getIn } from 'immutable';
-let state = {};
+import { emptyProfile } from '../data/data';
+let state = {
+  newProfile: emptyProfile,
+};
 
 export const set = (path: string[], value: Object) => {
   state = setIn(state, path, value);
@@ -19,4 +22,8 @@ export const useStore = (path: string[], defaultValue: Object) => {
     setVal(value);
   };
   return [val, setValue];
+};
+
+export const add = (path1: string[], path2: string[]) => {
+  set(path1, { ...get(path2) });
 };

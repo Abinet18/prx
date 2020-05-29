@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, RootRef } from '@material-ui/core';
 import {
   grayColors,
   primaryColors,
@@ -7,11 +7,13 @@ import {
   blueColors,
   whiteColor,
 } from '../constants/Constants';
-import { findByLabelText } from '@testing-library/react';
 
-const greenBkg = {
+const greenGradientBkg = {
   background: `linear-gradient(45deg, 
         ${greenColors[0]},${greenColors[9]})`,
+};
+const greenBkg = {
+  backgroundColor: greenColors[5],
 };
 const redBkg = {
   background: `linear-gradient(45deg, 
@@ -53,24 +55,34 @@ export const textInputStyles = makeStyles({
     width: '100%',
   },
 });
-
+const headerBase = {
+  ...defaultFont,
+  fontWeight: 600,
+  display: 'flex',
+  justifyContent: 'center',
+  padding: 8,
+};
+const footerBase = {
+  display: 'flex',
+  ...defaultFont,
+  width: '100%',
+  padding: 8,
+  justifyContent: 'flex-end',
+};
 export const cardStyles = makeStyles({
   container: {
     margin: 'auto',
     padding: 0,
   },
   root: {
-    margin: '16px auto',
+    margin: 16,
     borderRadius: 10,
     ...greenBlueBkg,
     overflow: 'hidden',
   },
   header: {
-    ...defaultFont,
-    fontWeight: 600,
-    textAlign: 'center',
-    ...greenBkg,
-    padding: 8,
+    ...greenGradientBkg,
+    ...headerBase,
   },
   body: {
     ...defaultFont,
@@ -79,12 +91,26 @@ export const cardStyles = makeStyles({
     padding: 8,
   },
   footer: {
-    display: 'flex',
-    ...defaultFont,
-    width: '100%',
-    ...greenBkg,
-    padding: 8,
-    justifyContent: 'flex-end',
+    ...greenGradientBkg,
+    ...footerBase,
+  },
+  headerNoBkg: {
+    ...headerBase,
+  },
+  footerNoBkg: {
+    ...footerBase,
+  },
+  headerBlue: {
+    ...headerBase,
+    ...blueBkg,
+  },
+  profile: {
+    height: 400,
+    overflowY: 'scroll',
+    margin: 16,
+    borderRadius: 10,
+    ...greenBlueBkg,
+    overflow: 'hidden',
   },
 });
 
@@ -127,7 +153,7 @@ export const chipClasses = makeStyles({
   root: {
     width: '100%',
     ...defaultFont,
-    ...greenBkg,
+    ...greenGradientBkg,
   },
 });
 
@@ -186,15 +212,15 @@ export const dateStyles = makeStyles({
 
 export const buttonStyles = makeStyles({
   primary: {
-    color: primaryColors[0],
+    color: whiteColor,
     fontWeight: 400,
     textTransform: 'none',
-    ...greenBlueBkg,
+    ...greenBkg,
     padding: '4px 16px',
+    margin: '4px 16px',
     cursor: 'pointer',
     '&:hover': {
-      ...greenBkg,
-      color: whiteColor,
+      backgroundColor: greenColors[7],
     },
   },
 });

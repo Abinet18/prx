@@ -1,18 +1,35 @@
 import React from 'react';
 
 import GridContainer from '../Views/GridContainer';
-import { XS } from '../types/types';
+import { XS, Spacing, AlignItems } from '../types/types';
 import { cardStyles } from '../styles/styles';
 
 type Props = {
   xs?: XS;
+  md?: XS;
+  lg?: XS;
   children: any;
+  alignItems?: AlignItems;
+  spacing?: Spacing;
 };
 
-const CardContainer = ({ xs, children }: Props) => {
+const CardContainer = ({
+  xs,
+  md,
+  lg,
+  children,
+  alignItems,
+  spacing,
+}: Props) => {
   const classes = cardStyles();
   return (
-    <GridContainer xs={xs} className={classes.container} spacing={1}>
+    <GridContainer
+      xs={xs}
+      md={md}
+      lg={lg}
+      className={classes.container}
+      spacing={spacing}
+      alignItems={alignItems}>
       {children}
     </GridContainer>
   );
