@@ -2,7 +2,7 @@ import React from 'react';
 
 import Profile from './Profile';
 import CardContainer from './CardContainer';
-import { useStore, add } from '../store/store';
+import { useStore, add, clear } from '../store/store';
 
 import Form from './Form';
 import { profileForm } from '../data/data';
@@ -13,10 +13,10 @@ const Profiles = () => {
 
   const onAddRecord = () => {
     const curId = 'profile' + index;
-
     add(['profiles', curId], ['newProfile']);
     setIndex(index + 1);
     setIds([...ids, curId]);
+    clear(['newProfile']);
   };
 
   return (

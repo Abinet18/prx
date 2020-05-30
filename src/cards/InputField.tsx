@@ -10,11 +10,12 @@ import RadioInput from '../Inputs/RadioInput';
 import SwitchInput from '../Inputs/Switch';
 import DateInput from '../Inputs/DateInput';
 
-import { useStore } from '../store/store';
+import { useStore, get, setInternal } from '../store/store';
 
 type Props = {
   field: ProfileFormField;
   path: string[];
+  // onValidityChange: (valid: number) => void;
 };
 
 const InputField = ({ field, path }: Props) => {
@@ -28,24 +29,33 @@ const InputField = ({ field, path }: Props) => {
     : [];
   const radioOptions =
     field.type.toUpperCase() === 'RADIO' ? (options as string[]) : [];
+
+  const onChange = (newValue: string) => {
+    const validityPath = [...path, 'valid'];
+    const valid = get(validityPath);
+    if (value.trim().length === 0 && newValue.trim().length > 0) {
+      console.log('valid', valid, valid + 1);
+      setInternal(validityPath, valid + 1);
+    } else if (value.trim().length > 0 && newValue.trim().length === 0) {
+      console.log('valid', valid, valid - 1);
+      setInternal(validityPath, valid + 1);
+    }
+    setValue(newValue);
+  };
   switch (field.type.toUpperCase()) {
     case 'TEXT':
       return (
         <TextInput
           value={value}
           placeholder={field.placeholder ?? ''}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
         />
       );
     case 'SELECT':
       return (
         <SelectInput
           value={value}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           options={selectOptions}
         />
       );
@@ -53,9 +63,7 @@ const InputField = ({ field, path }: Props) => {
       return (
         <MultiSelectInput
           selectedValsStr={value}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           options={selectOptions}
         />
       );
@@ -63,9 +71,7 @@ const InputField = ({ field, path }: Props) => {
       return (
         <CheckBox
           checked={value === 'Y' ? 'Y' : 'N'}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           label={field.label}
         />
       );
@@ -74,9 +80,7 @@ const InputField = ({ field, path }: Props) => {
         <CheckBoxes
           options={checkboxOptions}
           selectedValsStr={value}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           row
         />
       );
@@ -85,9 +89,7 @@ const InputField = ({ field, path }: Props) => {
         <RadioInput
           selectedValue={value}
           options={radioOptions}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           row
         />
       );
@@ -95,30 +97,18 @@ const InputField = ({ field, path }: Props) => {
       return (
         <SwitchInput
           checked={value === 'Y' ? 'Y' : 'N'}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
           label={field.label}
         />
       );
     case 'DATE':
-      return (
-        <DateInput
-          selectedDate={value}
-          onChange={(value) => {
-            setValue(value);
-          }}
-          label={''}
-        />
-      );
+      return <DateInput selectedDate={value} onChange={onChange} label={''} />;
     default:
       return (
         <TextInput
           value={value}
           placeholder={field.placeholder ?? ''}
-          onChange={(value) => {
-            setValue(value);
-          }}
+          onChange={onChange}
         />
       );
   }
