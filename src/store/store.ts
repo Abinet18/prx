@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect } from 'react';
-import { setIn, getIn } from 'immutable';
+import { setIn, getIn, removeIn } from 'immutable';
 import { emptyProfile } from '../data/data';
 let state = {
   newProfile: { ...emptyProfile, valid: 0 },
@@ -9,9 +9,14 @@ export const set = (path: string[], value: Object) => {
   state = setIn(state, path, value);
 };
 
+export const remove = (path: string[]) => {
+  state = removeIn(state, path);
+};
+
 export const setInternal = (path: string[], value: Object) => {
   state = setIn(state, path, value);
   updateSetters(path, value);
+  updateLocalStorage();
 };
 
 export const updateSetters = (path: string[], value: Object) => {
@@ -68,3 +73,17 @@ export const clear = (path: string[]) => {
     setInternal(path, '');
   }
 };
+
+const updateLocalStorage = () => {
+  try {
+    localStorage.setItem(
+      '_profiles',
+      JSON.stringify({ ...state, setters: {} }),
+    );
+  } catch (e) {}
+};
+
+const localState = localStorage.getItem('_profiles');
+if (localState != null) {
+  state = JSON.parse(localState);
+}

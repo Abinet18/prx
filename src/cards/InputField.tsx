@@ -15,7 +15,6 @@ import { useStore, get, setInternal } from '../store/store';
 type Props = {
   field: ProfileFormField;
   path: string[];
-  // onValidityChange: (valid: number) => void;
 };
 
 const InputField = ({ field, path }: Props) => {
@@ -34,10 +33,8 @@ const InputField = ({ field, path }: Props) => {
     const validityPath = [...path, 'valid'];
     const valid = get(validityPath);
     if (value.trim().length === 0 && newValue.trim().length > 0) {
-      console.log('valid', valid, valid + 1);
       setInternal(validityPath, valid + 1);
     } else if (value.trim().length > 0 && newValue.trim().length === 0) {
-      console.log('valid', valid, valid - 1);
       setInternal(validityPath, valid + 1);
     }
     setValue(newValue);
@@ -49,6 +46,7 @@ const InputField = ({ field, path }: Props) => {
           value={value}
           placeholder={field.placeholder ?? ''}
           onChange={onChange}
+          rows={field.rows}
         />
       );
     case 'SELECT':

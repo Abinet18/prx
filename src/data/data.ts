@@ -51,6 +51,7 @@ export const profileForm: ProfileFormData = {
       type: 'Text',
       placeholder: 'Summarize your experience',
       default: '',
+      rows: 4,
     },
     {
       name: 'mstatus',

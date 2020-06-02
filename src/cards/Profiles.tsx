@@ -2,28 +2,27 @@ import React from 'react';
 
 import Profile from './Profile';
 import CardContainer from './CardContainer';
-import { useStore, add, clear } from '../store/store';
+import { useStore, remove } from '../store/store';
 
-import Form from './Form';
-import { profileForm } from '../data/data';
+import ProfileFormModal from './ProfileFormModal';
+import AddProfile from './AddProfile';
+import ProfileViewModal from './ProfileViewModal';
 
 const Profiles = () => {
-  const [index, setIndex] = useStore(['index'], 1);
   const [ids, setIds] = useStore(['ids'], []);
 
-  const onAddRecord = () => {
-    const curId = 'profile' + index;
-    add(['profiles', curId], ['newProfile']);
-    setIndex(index + 1);
-    setIds([...ids, curId]);
-    clear(['newProfile']);
+  const onRemoveProfile = (id: string) => {
+    setIds(ids.filter((cid: string) => cid !== id));
+    remove(['profiles', id]);
   };
 
   return (
     <CardContainer xs={12} md={8} alignItems={'flex-start'}>
-      <Form data={profileForm} onSubmit={onAddRecord} />
+      <AddProfile />
+      <ProfileFormModal />
+      <ProfileViewModal onRemoveProfile={onRemoveProfile} />
       {ids.map((key: string, index: number) => (
-        <Profile key={key} id={key} title={key} />
+        <Profile key={key} id={key} onRemoveProfile={onRemoveProfile} />
       ))}
     </CardContainer>
   );

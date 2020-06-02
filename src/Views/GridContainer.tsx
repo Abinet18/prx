@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { XS, Spacing, AlignItems } from '../types/types';
+import { XS, Spacing, AlignItems, JustifyContent } from '../types/types';
 
 type Props = {
   xs?: XS;
@@ -11,6 +11,7 @@ type Props = {
   className?: string;
   spacing?: Spacing;
   alignItems?: AlignItems;
+  justify?: JustifyContent;
 };
 
 const GridContainer = ({
@@ -22,6 +23,7 @@ const GridContainer = ({
   children,
   className,
   alignItems,
+  justify,
 }: Props) => {
   return (
     <Grid
@@ -31,7 +33,7 @@ const GridContainer = ({
       md={md}
       lg={lg}
       direction={direction ?? 'row'}
-      justify='space-between'
+      justify={justify || 'space-between'}
       alignItems={alignItems || 'center'}
       className={className}
       spacing={spacing}>

@@ -6,11 +6,13 @@ type Props = {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  icon?: any;
 };
 
-const CustomButton = ({ label, onClick, className, disabled }: Props) => {
+const CustomButton = ({ label, icon, onClick, className, disabled }: Props) => {
   return (
     <Button className={className} disabled={disabled} onClick={onClick}>
+      {icon}
       {label}
     </Button>
   );

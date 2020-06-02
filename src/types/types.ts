@@ -20,6 +20,7 @@ export type ProfileFormField = {
   type: string;
   options?: string[] | Option[];
   default?: string;
+  rows?: number;
 };
 
 export type ProfileFormData = {
@@ -42,6 +43,15 @@ export type AlignItems =
   | 'flex-start'
   | 'flex-end'
   | 'baseline'
+  | undefined;
+
+export type JustifyContent =
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
   | undefined;
 
 export type ProfileType = {

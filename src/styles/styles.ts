@@ -16,6 +16,9 @@ const greenBkg = {
   backgroundColor: greenColors[5],
 };
 const redBkg = {
+  background: redColors[5],
+};
+const redGradientBkg = {
   background: `linear-gradient(45deg, 
           ${redColors[0]},${redColors[9]})`,
 };
@@ -65,14 +68,15 @@ const headerBase = {
 const footerBase = {
   display: 'flex',
   ...defaultFont,
-  width: '100%',
   padding: 8,
   justifyContent: 'flex-end',
+  height: 64,
 };
 export const cardStyles = makeStyles({
   container: {
     margin: 'auto',
     padding: 0,
+    position: 'relative',
   },
   root: {
     margin: 16,
@@ -83,30 +87,57 @@ export const cardStyles = makeStyles({
   header: {
     ...greenGradientBkg,
     ...headerBase,
+    position: 'relative',
   },
   body: {
     ...defaultFont,
     width: '100%',
     margin: 8,
     padding: 8,
+    overflowY: 'scroll',
+  },
+  profileBody: {
+    ...defaultFont,
+    width: '100%',
+    margin: 8,
+    padding: 8,
+    height: 300,
+    boxSizing: 'border-box',
+    overflowY: 'scroll',
+  },
+  viewProfileBody: {
+    ...defaultFont,
+    width: '100%',
+    margin: 8,
+    padding: 8,
+    minHeight: 600,
+    boxSizing: 'border-box',
+    overflowY: 'scroll',
   },
   footer: {
     ...greenGradientBkg,
     ...footerBase,
+    boxSizing: 'border-box',
   },
   headerNoBkg: {
     ...headerBase,
   },
   footerNoBkg: {
     ...footerBase,
+    boxSizing: 'border-box',
   },
   headerBlue: {
     ...headerBase,
     ...blueBkg,
+    position: 'relative',
   },
   profile: {
-    height: 400,
-    overflowY: 'scroll',
+    margin: 16,
+    borderRadius: 10,
+    ...greenBlueBkg,
+    overflow: 'hidden',
+  },
+  viewProfile: {
     margin: 16,
     borderRadius: 10,
     ...greenBlueBkg,
@@ -115,7 +146,7 @@ export const cardStyles = makeStyles({
   profilelist: {
     fontWeight: 500,
     padding: 8,
-    textOverflow: 'word-wrap',
+    wordBreak: 'break-word',
   },
   profilequote: {
     fontStyle: 'italic',
@@ -123,6 +154,30 @@ export const cardStyles = makeStyles({
   },
   profileitem: {
     padding: 8,
+  },
+  modal: {
+    position: 'relative',
+    top: 0,
+    left: 0,
+    outline: 'none',
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  form: {
+    margin: '64px auto',
+    borderRadius: 10,
+    ...greenBlueBkg,
+    overflow: 'hidden',
+  },
+  leftIcon: {
+    position: 'absolute',
+    left: 16,
+    top: 4,
   },
 });
 
@@ -230,6 +285,31 @@ export const buttonStyles = makeStyles({
     ...greenBkg,
     padding: '4px 16px',
     margin: '4px 16px',
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: greenColors[7],
+    },
+  },
+  delete: {
+    color: whiteColor,
+    fontWeight: 400,
+    textTransform: 'none',
+    ...redBkg,
+    padding: '4px 8px',
+    margin: 8,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: redColors[7],
+    },
+  },
+
+  edit: {
+    color: whiteColor,
+    fontWeight: 400,
+    textTransform: 'none',
+    ...greenBkg,
+    padding: '4px 8px',
+    margin: 8,
     cursor: 'pointer',
     '&:hover': {
       backgroundColor: greenColors[7],

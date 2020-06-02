@@ -17,6 +17,7 @@ const TextInput = ({ label, value, onChange, rows, placeholder }: Props) => {
     <>
       <InputLabel classes={labelClasses}>{label}</InputLabel>
       <Input
+        multiline={rows !== undefined && rows > 1}
         rows={rows}
         classes={textInputClasses}
         value={value}
