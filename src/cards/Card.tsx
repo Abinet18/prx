@@ -7,6 +7,7 @@ import { cardStyles } from '../styles/styles';
 
 type Props = {
   xs?: XS;
+  sm?: XS;
   md?: XS;
   lg?: XS;
   alignItems?: AlignItems;
@@ -18,6 +19,7 @@ type Props = {
 
 const Card = ({
   xs,
+  sm,
   md,
   lg,
   children,
@@ -30,15 +32,17 @@ const Card = ({
   return (
     <GridContainer
       xs={xs}
+      sm={sm}
       md={md}
       lg={lg}
-      className={className}
       alignItems={alignItems || 'flex-start'}>
-      <GridItem xs={12}> {header}</GridItem>
-      <GridItem xs={12} className={classes.body}>
-        {children}
-      </GridItem>
-      <GridItem xs={12}>{footer}</GridItem>
+      <GridContainer xs className={className}>
+        <GridItem xs={12}> {header}</GridItem>
+        <GridItem xs={12} className={classes.body}>
+          {children}
+        </GridItem>
+        <GridItem xs={12}>{footer}</GridItem>
+      </GridContainer>
     </GridContainer>
   );
 };

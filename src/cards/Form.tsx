@@ -30,7 +30,7 @@ const Form = ({ path }: Props) => {
   );
 
   return (
-    <Card header={header} xs={11} md={7} className={classes.form}>
+    <Card header={header} xs={12} md={8} className={classes.form}>
       {data.fields.map((field, index) => (
         <FormLine key={index} label={field.label} labelSize={3}>
           <InputField field={field} path={curPath} />

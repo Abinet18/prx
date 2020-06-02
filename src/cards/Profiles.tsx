@@ -17,7 +17,11 @@ const Profiles = () => {
   };
 
   return (
-    <CardContainer xs={12} md={8} alignItems={'flex-start'}>
+    <CardContainer
+      xs={12}
+      md={8}
+      alignItems={'flex-start'}
+      justify={'flex-start'}>
       <AddProfile />
       <ProfileFormModal />
       <ProfileViewModal onRemoveProfile={onRemoveProfile} />

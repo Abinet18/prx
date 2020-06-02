@@ -22,7 +22,8 @@ const AddProfile = () => {
     <Card
       header={header}
       xs={12}
-      md={5}
+      sm={6}
+      md={4}
       lg={3}
       className={classes.profile}
       footer={footer}>

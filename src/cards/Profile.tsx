@@ -73,7 +73,8 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
     <Card
       header={header}
       xs={12}
-      md={5}
+      sm={6}
+      md={4}
       lg={3}
       className={classes.profile}
       footer={footer}>
@@ -82,8 +83,8 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
   ) : (
     <Card
       header={header}
-      xs={11}
-      md={7}
+      xs={12}
+      md={8}
       footer={footer}
       className={classes.viewProfile}>
       {body}

@@ -110,7 +110,7 @@ export const cardStyles = makeStyles({
     width: '100%',
     margin: 8,
     padding: 8,
-    minHeight: 600,
+    minHeight: 450,
     boxSizing: 'border-box',
     overflowY: 'scroll',
   },
@@ -169,10 +169,12 @@ export const cardStyles = makeStyles({
     bottom: 0,
   },
   form: {
-    margin: '64px auto',
+    margin: 16,
     borderRadius: 10,
     ...greenBlueBkg,
+    overflowY: 'scroll',
     overflow: 'hidden',
+    height: 600,
   },
   leftIcon: {
     position: 'absolute',
@@ -283,8 +285,8 @@ export const buttonStyles = makeStyles({
     fontWeight: 400,
     textTransform: 'none',
     ...greenBkg,
-    padding: '4px 16px',
-    margin: '4px 16px',
+    padding: '4px 8px',
+    margin: 8,
     cursor: 'pointer',
     '&:hover': {
       backgroundColor: greenColors[7],
