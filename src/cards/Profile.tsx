@@ -4,9 +4,10 @@ import { useStore, setInternal } from '../store/store';
 import { cardStyles } from '../styles/styles';
 import GridItem from '../Views/GridItem';
 import DeleteButton from '../Buttons/DeleteButton';
-import EditButton from '../Buttons/EditButton';
+import EditIconButton from '../IconButtons/EditIconButton';
 import AllOutIcon from '@material-ui/icons/AllOut';
 import CloseIcon from '@material-ui/icons/Close';
+import DeleteIconButton from '../IconButtons/DeleteIconButton';
 
 type Props = {
   id: string;
@@ -43,8 +44,8 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
   );
   const footer = (
     <div className={classes.footerNoBkg}>
-      <EditButton label={'Edit'} onClick={onEdit} />
-      <DeleteButton label={'Delete'} onClick={() => onRemoveProfile(id)} />
+      <EditIconButton label={'Edit'} onClick={onEdit} />
+      <DeleteIconButton label={'Delete'} onClick={() => onRemoveProfile(id)} />
     </div>
   );
 

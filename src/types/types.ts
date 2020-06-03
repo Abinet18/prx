@@ -65,3 +65,11 @@ export type ProfileType = {
   interests: string;
   skills: string;
 };
+
+export type RouteDetail = {
+  path: string;
+  name: string;
+  icon: any;
+  component: any;
+  topnav?: boolean;
+};

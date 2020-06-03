@@ -74,7 +74,7 @@ const footerBase = {
 };
 export const cardStyles = makeStyles({
   container: {
-    margin: 'auto',
+    margin: '64px auto',
     padding: 0,
     position: 'relative',
   },
@@ -88,6 +88,15 @@ export const cardStyles = makeStyles({
     ...greenGradientBkg,
     ...headerBase,
     position: 'relative',
+  },
+  pageheader: {
+    position: 'fixed',
+    top: 0,
+    height: 64,
+    ...greenGradientBkg,
+    padding: 8,
+    zIndex: 100,
+    margin: '0 auto',
   },
   body: {
     ...defaultFont,
@@ -110,7 +119,7 @@ export const cardStyles = makeStyles({
     width: '100%',
     margin: 8,
     padding: 8,
-    minHeight: 450,
+    height: 'calc(100vh - 240px)',
     boxSizing: 'border-box',
     overflowY: 'scroll',
   },
@@ -138,7 +147,7 @@ export const cardStyles = makeStyles({
     overflow: 'hidden',
   },
   viewProfile: {
-    margin: 16,
+    margin: '72px 16px 16px 16px',
     borderRadius: 10,
     ...greenBlueBkg,
     overflow: 'hidden',
@@ -169,17 +178,24 @@ export const cardStyles = makeStyles({
     bottom: 0,
   },
   form: {
-    margin: 16,
+    margin: '72px 16px 16px 16px',
     borderRadius: 10,
     ...greenBlueBkg,
     overflowY: 'scroll',
     overflow: 'hidden',
-    height: 600,
+    height: 'calc(100vh - 120px)',
   },
   leftIcon: {
     position: 'absolute',
     left: 16,
     top: 4,
+  },
+  link: {
+    ...defaultFont,
+    padding: 4,
+    outline: 'none',
+    textDecoration: 'none',
+    textAlign: 'center',
   },
 });
 
@@ -293,10 +309,9 @@ export const buttonStyles = makeStyles({
     },
   },
   delete: {
-    color: whiteColor,
+    color: redColors[5],
     fontWeight: 400,
     textTransform: 'none',
-    ...redBkg,
     padding: '4px 8px',
     margin: 8,
     cursor: 'pointer',
@@ -306,10 +321,9 @@ export const buttonStyles = makeStyles({
   },
 
   edit: {
-    color: whiteColor,
+    color: greenColors[5],
     fontWeight: 400,
     textTransform: 'none',
-    ...greenBkg,
     padding: '4px 8px',
     margin: 8,
     cursor: 'pointer',

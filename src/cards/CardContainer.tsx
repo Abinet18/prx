@@ -12,6 +12,7 @@ type Props = {
   alignItems?: AlignItems;
   spacing?: Spacing;
   justify?: JustifyContent;
+  className?: string;
 };
 
 const CardContainer = ({
@@ -22,14 +23,14 @@ const CardContainer = ({
   alignItems,
   spacing,
   justify,
+  className,
 }: Props) => {
-  const classes = cardStyles();
   return (
     <GridContainer
       xs={xs}
       md={md}
       lg={lg}
-      className={classes.container}
+      className={className}
       spacing={spacing}
       alignItems={alignItems}
       justify={justify}>
