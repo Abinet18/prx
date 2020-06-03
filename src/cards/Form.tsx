@@ -1,41 +1,42 @@
 import React from 'react';
 
-import TextInput from '../Inputs/TextInput';
-import SelectInput from '../Inputs/SelectInput';
 import Card from './Card';
 
 import FormLine from './FormLine';
-import { Option } from '../types/types';
-import MultiSelectInput from '../Inputs/MultiSelectInput';
+import { profileForm as data } from '../data/data';
+
+import { cardStyles } from '../styles/styles';
+import InputField from './InputField';
+import ProfileSaveButton from './ProfileSaveButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { useStore } from '../store/store';
 
 type Props = {
-  label?: string;
-  value: string;
-  onChange: (value: string) => void;
+  path?: string[];
 };
 
-const optionValues = ['Option1', 'Option2', 'Option3', 'Option4'];
-const options: Option[] = optionValues.map((option) => {
-  return { value: option, label: option };
-});
+const Form = ({ path }: Props) => {
+  const classes = cardStyles();
+  const curPath = path || ['newProfile'];
+  const [, setOpen] = useStore(['open'], false);
+  const onClose = () => {
+    setOpen(false);
+  };
+  const header = (
+    <div className={classes.header}>
+      <CloseIcon onClick={onClose} className={classes.leftIcon} />
+      {data.title}
+    </div>
+  );
 
-const footer = <div>Footer</div>;
-const Form = () => {
   return (
-    <Card title={'Form'} xs={8} footer={footer}>
-      <FormLine label={'Name'}>
-        <TextInput value={'test'} onChange={(val) => {}} />
-      </FormLine>
-      <FormLine label={'Status'}>
-        <SelectInput value={''} onChange={(val) => {}} options={options} />
-      </FormLine>
-      <FormLine label={'Hobbies'}>
-        <MultiSelectInput
-          values={[]}
-          onChange={(val) => {}}
-          options={options}
-        />
-      </FormLine>
+    <Card header={header} xs={12} md={8} className={classes.form}>
+      {data.fields.map((field, index) => (
+        <FormLine key={index} label={field.label} labelSize={3}>
+          <InputField field={field} path={curPath} />
+        </FormLine>
+      ))}
+      <ProfileSaveButton path={curPath} count={data.fields.length} />
     </Card>
   );
 };

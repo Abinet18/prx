@@ -4,12 +4,14 @@ import { XS } from '../types/types';
 
 type Props = {
   xs?: XS;
+  md?: XS;
+  lg?: XS;
   children: any;
   className?: string;
 };
-const GridItem = ({ xs, children, className }: Props) => {
+const GridItem = ({ xs, md, lg, children, className }: Props) => {
   return (
-    <Grid item xs={xs} className={className}>
+    <Grid item xs={xs} md={md} lg={lg} className={className}>
       {children}
     </Grid>
   );
