@@ -40,6 +40,7 @@ export const labelStyles = makeStyles({
   root: {
     ...defaultFont,
     verticalAlign: 'bottom',
+    paddingBottom: 8,
   },
 });
 
@@ -103,7 +104,6 @@ export const cardStyles = makeStyles({
     width: '100%',
     margin: 8,
     padding: 8,
-    overflowY: 'scroll',
   },
   profileBody: {
     ...defaultFont,
@@ -144,13 +144,14 @@ export const cardStyles = makeStyles({
     margin: 16,
     borderRadius: 10,
     ...greenBlueBkg,
-    overflow: 'hidden',
+  },
+  qn: {
+    margin: 16,
   },
   viewProfile: {
     margin: '72px 16px 16px 16px',
     borderRadius: 10,
     ...greenBlueBkg,
-    overflow: 'hidden',
   },
   profilelist: {
     fontWeight: 500,
@@ -197,11 +198,19 @@ export const cardStyles = makeStyles({
     textDecoration: 'none',
     textAlign: 'center',
   },
+  qbrief: {
+    padding: 8,
+  },
+  qactive: {
+    ...greenBlueBkg,
+    borderLeft: `2px solid ${greenColors[5]}`,
+  },
 });
 
 export const formStyles = makeStyles({
   formLine: {
     margin: 8,
+    padding: 8,
   },
 });
 
@@ -330,5 +339,19 @@ export const buttonStyles = makeStyles({
     '&:hover': {
       backgroundColor: greenColors[7],
     },
+  },
+  close: {
+    color: redColors[1],
+    fontWeight: 400,
+    textTransform: 'none',
+    padding: 0,
+    margin: 8,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: redColors[1],
+      color: redColors[5],
+    },
+    position: 'relative',
+    top: -8,
   },
 });

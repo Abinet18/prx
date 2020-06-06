@@ -2,7 +2,7 @@ import React from 'react';
 
 import GridContainer from '../Views/GridContainer';
 import GridItem from '../Views/GridItem';
-import { XS, AlignItems } from '../types/types';
+import { XS, AlignItems, JustifyContent } from '../types/types';
 import { cardStyles } from '../styles/styles';
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
   header?: any;
   footer?: any;
   className?: string;
+  justify?: JustifyContent;
 };
 
 const Card = ({
@@ -27,20 +28,19 @@ const Card = ({
   footer,
   className,
   alignItems,
+  justify,
 }: Props) => {
-  const classes = cardStyles();
   return (
     <GridContainer
       xs={xs}
       sm={sm}
       md={md}
       lg={lg}
-      alignItems={alignItems || 'flex-start'}>
+      alignItems={alignItems || 'flex-start'}
+      justify={justify || 'flex-start'}>
       <GridContainer xs className={className}>
         <GridItem xs={12}> {header}</GridItem>
-        <GridItem xs={12} className={classes.body}>
-          {children}
-        </GridItem>
+        <GridItem xs={12}>{children}</GridItem>
         <GridItem xs={12}>{footer}</GridItem>
       </GridContainer>
     </GridContainer>

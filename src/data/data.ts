@@ -1,4 +1,9 @@
-import { ProfileType, ProfileFormData } from '../types/types';
+import {
+  ProfileType,
+  ProfileFormData,
+  QuestionType,
+  QuestionFormData,
+} from '../types/types';
 
 export const profileForm: ProfileFormData = {
   title: 'User Profile Form',
@@ -101,4 +106,30 @@ export const emptyProfile: ProfileType = {
   mstatus: '',
   interests: '',
   skills: '',
+};
+
+export const questionForm: QuestionFormData = {
+  title: 'Question',
+  fields: [
+    {
+      name: 'text',
+      label: 'Question',
+      type: 'Text',
+      placeholder: 'Write the question ...',
+      default: '',
+      rows: 4,
+    },
+    {
+      name: 'type',
+      label: 'Question Type',
+      type: 'Radio',
+      default: '',
+      options: ['Text', 'Select', 'True False', 'MultiSelect', 'Match'],
+    },
+  ],
+};
+
+export const emptyQuestion: QuestionType = {
+  text: '',
+  type: 'TEXT',
 };

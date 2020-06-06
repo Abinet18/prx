@@ -1,22 +1,31 @@
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import HelpIcon from '@material-ui/icons/Help';
 import Profiles from '../cards/Profiles';
 import { Route } from 'react-router-dom';
 import { RouteDetail } from '../types/types';
 import React from 'react';
+import Questions from '../cards/Question/Questions';
 
 export const routes: RouteDetail[] = [
-  {
-    path: '/',
-    name: 'Home',
-    icon: HomeIcon,
-    component: Profiles,
-    topnav: true,
-  },
   {
     path: '/profiles',
     name: 'Profiles',
     icon: AccountBoxIcon,
+    component: Profiles,
+    topnav: true,
+  },
+  {
+    path: '/questions',
+    name: 'Questions',
+    icon: HelpIcon,
+    component: Questions,
+    topnav: true,
+  },
+  {
+    path: '/',
+    name: 'Home',
+    icon: HomeIcon,
     component: Profiles,
     topnav: true,
   },

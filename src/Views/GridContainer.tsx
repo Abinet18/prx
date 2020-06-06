@@ -13,6 +13,7 @@ type Props = {
   spacing?: Spacing;
   alignItems?: AlignItems;
   justify?: JustifyContent;
+  onClick?: () => void;
 };
 
 const GridContainer = ({
@@ -26,6 +27,7 @@ const GridContainer = ({
   className,
   alignItems,
   justify,
+  onClick,
 }: Props) => {
   return (
     <Grid
@@ -39,7 +41,8 @@ const GridContainer = ({
       justify={justify || 'flex-start'}
       alignItems={alignItems || 'flex-start'}
       className={className}
-      spacing={spacing}>
+      spacing={spacing}
+      onClick={onClick}>
       {children}
     </Grid>
   );
