@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import { RouteDetail } from '../types/types';
 import React from 'react';
 import Questions from '../cards/Question/Questions';
+import AnswerQuestions from '../cards/Question/AnswerQuestions';
 
 export const routes: RouteDetail[] = [
   {
@@ -20,6 +21,13 @@ export const routes: RouteDetail[] = [
     name: 'Questions',
     icon: HelpIcon,
     component: Questions,
+    topnav: true,
+  },
+  {
+    path: '/answers',
+    name: 'Answers',
+    icon: HelpIcon,
+    component: AnswerQuestions,
     topnav: true,
   },
   {

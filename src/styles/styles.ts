@@ -112,7 +112,7 @@ export const cardStyles = makeStyles({
     padding: 8,
     height: 300,
     boxSizing: 'border-box',
-    overflowY: 'scroll',
+    overflowY: 'auto',
   },
   viewProfileBody: {
     ...defaultFont,
@@ -121,7 +121,7 @@ export const cardStyles = makeStyles({
     padding: 8,
     height: 'calc(100vh - 240px)',
     boxSizing: 'border-box',
-    overflowY: 'scroll',
+    overflowY: 'auto',
   },
   footer: {
     ...greenGradientBkg,
@@ -182,7 +182,7 @@ export const cardStyles = makeStyles({
     margin: '72px 16px 16px 16px',
     borderRadius: 10,
     ...greenBlueBkg,
-    overflowY: 'scroll',
+    overflowY: 'auto',
     overflow: 'hidden',
     height: 'calc(100vh - 120px)',
   },
@@ -204,6 +204,12 @@ export const cardStyles = makeStyles({
   qactive: {
     ...greenBlueBkg,
     borderLeft: `2px solid ${greenColors[5]}`,
+  },
+  options: {
+    padding: '16px 32px',
+  },
+  option: {
+    padding: 8,
   },
 });
 

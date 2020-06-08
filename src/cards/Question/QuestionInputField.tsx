@@ -39,9 +39,9 @@ const QuestionInputField = ({ field, path }: Props) => {
   const onChange = (newValue: string) => {
     const validityPath = [...path, 'valid'];
     const valid = get(validityPath);
-    if (value.trim().length === 0 && newValue.trim().length > 0) {
+    if (value?.trim().length === 0 && newValue.trim().length > 0) {
       setInternal(validityPath, valid + 1);
-    } else if (value.trim().length > 0 && newValue.trim().length === 0) {
+    } else if (value?.trim().length > 0 && newValue.trim().length === 0) {
       setInternal(validityPath, valid + 1);
     }
     setValue(newValue);
