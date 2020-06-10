@@ -23,7 +23,7 @@ const Form = ({ path }: Props) => {
     setOpen(false);
   };
   const header = (
-    <div className={classes.header}>
+    <div className={classes.headerBlue}>
       <CloseIcon onClick={onClose} className={classes.leftIcon} />
       {data.title}
     </div>

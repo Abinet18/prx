@@ -15,7 +15,7 @@ const ProfileSaveButton = ({ path, count }: Props) => {
     if (path[0] === 'newProfile') {
       const index = get(['index']);
       const curId = 'profile' + index;
-      const ids = get(['ids']);
+      const ids = get(['ids']) ?? [];
       add(['profiles', curId], ['newProfile']);
       setInternal(['index'], index + 1);
       setInternal(['ids'], [...ids, curId]);

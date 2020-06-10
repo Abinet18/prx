@@ -3,7 +3,6 @@ import Card from './Card';
 import { useStore, setInternal } from '../store/store';
 import { cardStyles } from '../styles/styles';
 import GridItem from '../Views/GridItem';
-import DeleteButton from '../Buttons/DeleteButton';
 import EditIconButton from '../IconButtons/EditIconButton';
 import AllOutIcon from '@material-ui/icons/AllOut';
 import CloseIcon from '@material-ui/icons/Close';

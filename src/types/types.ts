@@ -28,6 +28,21 @@ export type ProfileFormData = {
   fields: ProfileFormField[];
 };
 
+export type QuestionFormField = {
+  name: keyof QuestionType;
+  label: string;
+  placeholder?: string;
+  type: string;
+  options?: string[] | Option[];
+  default?: string;
+  rows?: number;
+};
+
+export type QuestionFormData = {
+  title: string;
+  fields: QuestionFormField[];
+};
+
 export type StyleColor =
   | 'inherit'
   | 'primary'
@@ -72,4 +87,11 @@ export type RouteDetail = {
   icon: any;
   component: any;
   topnav?: boolean;
+};
+
+export type QuestionType = {
+  title?: string;
+  text: string;
+  type: 'TEXT' | 'SELECT' | 'MULTISELECT' | 'TF' | 'MATCH';
+  options?: string[];
 };

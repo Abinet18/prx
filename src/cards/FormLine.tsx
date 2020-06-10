@@ -15,10 +15,10 @@ const FormLine = ({ label, children, labelSize }: Props) => {
   const classes = formStyles();
   return (
     <GridContainer xs className={classes.formLine}>
-      <GridItem xs={12} md={labelSize || 3}>
+      <GridItem xs={12} md={labelSize ? labelSize : 3}>
         <Label label={label} />
       </GridItem>
-      <GridItem xs={12} md>
+      <GridItem xs={12} md={labelSize && labelSize < 4 ? true : 12}>
         {children}
       </GridItem>
     </GridContainer>
