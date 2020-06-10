@@ -27,7 +27,7 @@ const CheckBoxes = ({
 }: Props) => {
   const classes = formControlLabelStyles();
   const checkboxClasses = checkboxStyles();
-  const selectedValues = selectedValsStr.split(',');
+  const selectedValues = selectedValsStr?.split(',') ?? [];
   const _onChange = (value: string, checked: boolean) => {
     if (checked && !selectedValues.includes(value)) {
       onChange([...selectedValues, value].join(','));

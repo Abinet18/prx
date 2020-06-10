@@ -30,7 +30,7 @@ const AnswerOptions = ({ path }: Props) => {
       setOptions(get([...path, 'options']));
     }
   }, [options, path, setOptions, setType, type]);
-  if (type?.toUpperCase() !== 'SELECT') {
+  if (type?.toUpperCase().indexOf('SELECT') === -1) {
     return null;
   }
 

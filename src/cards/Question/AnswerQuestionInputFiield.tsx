@@ -6,8 +6,8 @@ import CheckBoxes from '../../Inputs/CheckBoxes';
 import RadioInput from '../../Inputs/RadioInput';
 
 import { useStore, get } from '../../store/store';
-import GridContainer from '../../Views/GridContainer';
-import GridItem from '../../Views/GridItem';
+
+import FormLine from '../FormLine';
 
 type Props = {
   path: string[];
@@ -89,10 +89,9 @@ const AnswerQuestionInputField = ({ path }: Props) => {
   };
 
   return (
-    <GridContainer>
-      <GridItem xs={12}>{q.text}</GridItem>
-      <GridItem xs={12}>{getInput()}</GridItem>
-    </GridContainer>
+    <FormLine label={q.text} labelSize={12}>
+      {getInput()}
+    </FormLine>
   );
 };
 
