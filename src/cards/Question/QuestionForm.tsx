@@ -9,18 +9,24 @@ import { cardStyles } from '../../styles/styles';
 
 import QuestionInputField from './QuestionInputField';
 import AnswerOptions from './AnswerOptions';
+import { useStore } from '../../store/store';
 
 type Props = {
   path: string[];
 };
 const QuestionForm = ({ path }: Props) => {
   const classes = cardStyles();
+  const [qids] = useStore(['qids'], []);
 
   if (path.length === 0) {
     return null;
   }
 
-  const header = <div className={classes.headerBlue}>{data.title}</div>;
+  const index = qids.indexOf(path[path.length - 1]);
+
+  const header = (
+    <div className={classes.headerBlue}>{`Question ${index + 1}`}</div>
+  );
 
   return (
     <Card header={header} xs={8} className={classes.qn}>

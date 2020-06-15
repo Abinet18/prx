@@ -36,6 +36,16 @@ const defaultFont = {
   fontSize: '14px',
 };
 
+const whiteFont = {
+  color: whiteColor,
+  fontSize: '14px',
+};
+
+const lightFont = {
+  color: grayColors[12],
+  fontSize: '14px',
+};
+
 export const labelStyles = makeStyles({
   root: {
     ...defaultFont,
@@ -95,7 +105,7 @@ export const cardStyles = makeStyles({
     top: 0,
     height: 64,
     ...greenGradientBkg,
-    padding: 8,
+    padding: '8px 16px',
     zIndex: 100,
     margin: '0 auto',
   },
@@ -192,14 +202,22 @@ export const cardStyles = makeStyles({
     top: 4,
   },
   link: {
-    ...defaultFont,
+    ...lightFont,
     padding: 4,
     outline: 'none',
     textDecoration: 'none',
     textAlign: 'center',
   },
+  navlink: {
+    ...defaultFont,
+    padding: 4,
+    outline: 'none',
+    textDecoration: 'none',
+  },
   qbrief: {
     padding: 8,
+    height: 52,
+    boxSizing: 'border-box',
   },
   qactive: {
     ...greenBlueBkg,
@@ -211,6 +229,17 @@ export const cardStyles = makeStyles({
   option: {
     padding: 8,
   },
+  postBody: {
+    ...defaultFont,
+    width: '100%',
+    margin: 8,
+    padding: 8,
+  },
+  postItem: {
+    padding: 8,
+  },
+  postText: { padding: 16, textAlign: 'justify' },
+  post: { margin: 16, borderRadius: 10, ...greenBlueBkg, padding: 16 },
 });
 
 export const formStyles = makeStyles({

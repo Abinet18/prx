@@ -3,7 +3,7 @@ import { IconButton } from '@material-ui/core';
 
 type Props = {
   label?: string;
-  onClick?: () => void;
+  onClick?: (event?: any) => void;
   className?: string;
   disabled?: boolean;
   icon?: any;

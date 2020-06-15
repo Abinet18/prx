@@ -87,6 +87,7 @@ export type RouteDetail = {
   icon: any;
   component: any;
   topnav?: boolean;
+  navOrder?: number;
 };
 
 export type QuestionType = {
@@ -94,4 +95,27 @@ export type QuestionType = {
   text: string;
   type: 'TEXT' | 'SELECT' | 'MULTISELECT' | 'TF' | 'MATCH';
   options?: string[];
+};
+
+export type PostFormField = {
+  name: keyof PostType;
+  label: string;
+  placeholder?: string;
+  type: string;
+  options?: string[] | Option[];
+  default?: string;
+  rows?: number;
+};
+
+export type PostFormData = {
+  title: string;
+  fields: PostFormField[];
+};
+
+export type PostType = {
+  title: string;
+  text: string;
+  postedBy: string;
+  postedDate: string;
+  imageAttached: any;
 };

@@ -3,6 +3,8 @@ import {
   ProfileFormData,
   QuestionType,
   QuestionFormData,
+  PostFormData,
+  PostType,
 } from '../types/types';
 
 export const profileForm: ProfileFormData = {
@@ -132,4 +134,40 @@ export const questionForm: QuestionFormData = {
 export const emptyQuestion: QuestionType = {
   text: '',
   type: 'TEXT',
+};
+
+export const postForm: PostFormData = {
+  title: 'Post',
+  fields: [
+    {
+      name: 'title',
+      label: 'Title',
+      type: 'Text',
+      placeholder: 'Give a title ...',
+      default: '',
+    },
+    {
+      name: 'text',
+      label: 'Post',
+      type: 'Text',
+      placeholder: 'What do you want to say ?',
+      default: '',
+      rows: 8,
+    },
+    {
+      name: 'postedBy',
+      label: 'Posted by',
+      type: 'Text',
+      default: '',
+      placeholder: 'Write your name and title',
+    },
+  ],
+};
+
+export const emptyPost: PostType = {
+  title: '',
+  text: '',
+  postedBy: '',
+  postedDate: '',
+  imageAttached: '',
 };

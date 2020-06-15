@@ -27,8 +27,13 @@ const Questions = () => {
       justify={'flex-start'}
       className={classes.container}>
       <Card xs={4} header={header} className={classes.qn}>
-        {qids.map((key: string) => (
-          <QBrief key={key} qid={key} onRemoveQuestion={onRemoveQuestion} />
+        {qids.map((key: string, index: number) => (
+          <QBrief
+            key={key}
+            qid={key}
+            index={index}
+            onRemoveQuestion={onRemoveQuestion}
+          />
         ))}
         <AddQuestion />
       </Card>

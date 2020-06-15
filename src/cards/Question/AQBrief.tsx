@@ -12,10 +12,11 @@ type Props = {
 const AQBrief = ({ qid }: Props) => {
   const classes = cardStyles();
   const [curAQpath, setCurAQpath] = useStore(['curAQpath'], []);
-
+  const [qids] = useStore(['qids'], []);
   const onSelectQ = () => {
     setCurAQpath(['questions', qid]);
   };
+  const index = qids.indexOf(qid);
   return (
     <div
       className={cx(
@@ -23,7 +24,7 @@ const AQBrief = ({ qid }: Props) => {
         curAQpath[curAQpath.length - 1] === qid ? classes.qactive : null,
       )}>
       <GridContainer xs justify={'space-between'} onClick={onSelectQ}>
-        <GridItem xs>{qid}</GridItem>
+        <GridItem xs>{`Question ${index + 1}`}</GridItem>
       </GridContainer>
     </div>
   );

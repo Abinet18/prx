@@ -9,9 +9,10 @@ import cx from 'classnames';
 
 type Props = {
   qid: string;
+  index: number;
   onRemoveQuestion: (val: string) => void;
 };
-const QBrief = ({ qid, onRemoveQuestion }: Props) => {
+const QBrief = ({ qid, index, onRemoveQuestion }: Props) => {
   const classes = cardStyles();
   const [curQpath, setCurQpath] = useStore(['curQpath'], []);
 
@@ -25,7 +26,7 @@ const QBrief = ({ qid, onRemoveQuestion }: Props) => {
         curQpath[curQpath.length - 1] === qid ? classes.qactive : null,
       )}>
       <GridContainer xs justify={'space-between'} onClick={onSelectQ}>
-        <GridItem xs>{qid}</GridItem>
+        <GridItem xs>{`Question ${index + 1}`}</GridItem>
         <CloseIconButton onClick={() => onRemoveQuestion(qid)} />
       </GridContainer>
     </div>

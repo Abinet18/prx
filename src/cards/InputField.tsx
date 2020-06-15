@@ -2,7 +2,7 @@ import React from 'react';
 
 import TextInput from '../Inputs/TextInput';
 import SelectInput from '../Inputs/SelectInput';
-import { Option, ProfileFormField } from '../types/types';
+import { Option, ProfileFormField, PostFormField } from '../types/types';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
 import CheckBox from '../Inputs/CheckBox';
 import CheckBoxes from '../Inputs/CheckBoxes';
@@ -13,7 +13,7 @@ import DateInput from '../Inputs/DateInput';
 import { useStore, get, setInternal } from '../store/store';
 
 type Props = {
-  field: ProfileFormField;
+  field: ProfileFormField | PostFormField;
   path: string[];
 };
 

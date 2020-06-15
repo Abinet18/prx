@@ -86,4 +86,5 @@ const updateLocalStorage = () => {
 const localState = localStorage.getItem('_profiles');
 if (localState != null) {
   state = JSON.parse(localState);
+  console.log(state);
 }

@@ -2,9 +2,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import HelpIcon from '@material-ui/icons/Help';
 import Profiles from '../cards/Profiles';
-import { Route } from 'react-router-dom';
+import Posts from '../cards/Posts/Posts';
+
 import { RouteDetail } from '../types/types';
-import React from 'react';
+
 import Questions from '../cards/Question/Questions';
 import AnswerQuestions from '../cards/Question/AnswerQuestions';
 
@@ -15,6 +16,7 @@ export const routes: RouteDetail[] = [
     icon: AccountBoxIcon,
     component: Profiles,
     topnav: true,
+    navOrder: 2,
   },
   {
     path: '/questions',
@@ -22,6 +24,7 @@ export const routes: RouteDetail[] = [
     icon: HelpIcon,
     component: Questions,
     topnav: true,
+    navOrder: 3,
   },
   {
     path: '/answers',
@@ -29,18 +32,28 @@ export const routes: RouteDetail[] = [
     icon: HelpIcon,
     component: AnswerQuestions,
     topnav: true,
+    navOrder: 4,
+  },
+  {
+    path: '/posts',
+    name: 'Posts',
+    icon: HomeIcon,
+    component: Posts,
+    topnav: false,
   },
   {
     path: '/',
     name: 'Home',
     icon: HomeIcon,
-    component: Profiles,
+    component: Posts,
     topnav: true,
+    navOrder: 1,
   },
 ];
 
 export const getTopNavLinks = routes
   .filter((route) => route.topnav)
+  .sort((a, b) => (a.navOrder || 0) - (b.navOrder || 0))
   .map((route) => {
     return {
       path: route.path,
