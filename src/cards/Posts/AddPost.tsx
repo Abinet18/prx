@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../Card';
 import { cardStyles } from '../../styles/styles';
 import GridItem from '../../Views/GridItem';
 import AddButton from '../../Buttons/AddButton';
 import { useStore } from '../../store/store';
+import TabPanel from '../../Views/TabPanel';
+import IconChooser from '../../Icons/Icons';
+import ColorPicker from '../../Inputs/ColorPicker';
+// import { DraggableExample, DNDExample } from '../../Views/DraggableList';
 
 const AddPost = () => {
   const classes = cardStyles();
@@ -22,6 +26,9 @@ const AddPost = () => {
       <GridItem xs className={classes.postBody}>
         <AddButton onClick={onClick} label={'Add Post'} />
       </GridItem>
+      {/* <TabPanel /> */}
+      <IconChooser />
+      {/* <ColorPicker value='' onChange={() => {}} /> */}
     </Card>
   );
 };

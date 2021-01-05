@@ -9,8 +9,11 @@ import CheckBoxes from '../Inputs/CheckBoxes';
 import RadioInput from '../Inputs/RadioInput';
 import SwitchInput from '../Inputs/Switch';
 import DateInput from '../Inputs/DateInput';
+import ImageUpload from '../Inputs/ImageUpload';
+import Editor from 'rich-markdown-editor';
 
 import { useStore, get, setInternal } from '../store/store';
+import ColorPicker from '../Inputs/ColorPicker';
 
 type Props = {
   field: ProfileFormField | PostFormField;
@@ -101,6 +104,14 @@ const InputField = ({ field, path }: Props) => {
       );
     case 'DATE':
       return <DateInput selectedDate={value} onChange={onChange} label={''} />;
+    case 'IMAGE':
+      return <ImageUpload value={value} onChange={onChange} label={''} />;
+    case 'MARKDOWN': {
+      return <Editor value={value} onChange={() => onChange(value)} />;
+    }
+    case 'COLORPICKER': {
+      return <ColorPicker value={value} onChange={onChange} />;
+    }
     default:
       return (
         <TextInput

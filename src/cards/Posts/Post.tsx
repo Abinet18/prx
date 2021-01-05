@@ -4,6 +4,7 @@ import { useStore, setInternal } from '../../store/store';
 import { cardStyles } from '../../styles/styles';
 import GridItem from '../../Views/GridItem';
 import EditIconButton from '../../IconButtons/EditIconButton';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   id: string;
@@ -29,15 +30,22 @@ const Post = ({ id, viewModal }: Props) => {
   );
 
   const body = (
-    <div className={classes.postBody}>
+    <div
+      className={classes.postBody}
+      style={{ border: `1px solid ${post.color}` }}>
       <GridItem
         xs
         className={classes.postItem}>{`Posted on ${post.postedDate}`}</GridItem>
       <GridItem
         xs
         className={classes.postItem}>{`By ${post.postedBy} `}</GridItem>
+      {post.imageAttached && (
+        <GridItem xs className={classes.postText}>
+          <img src={post.imageAttached} height={300} width={'100%'} alt={''} />
+        </GridItem>
+      )}
       <GridItem xs className={classes.postText}>
-        {post.text}
+        <ReactMarkdown source={post.text} />
       </GridItem>
 
       {/* <GridItem xs className={classes.postImage}>

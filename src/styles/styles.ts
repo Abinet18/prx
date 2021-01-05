@@ -31,9 +31,16 @@ const greenBlueBkg = {
   background: `linear-gradient(45deg, 
               ${blueColors[0]},${greenColors[0]})`,
 };
+const greenBlueBkg2 = {
+  background: `linear-gradient(45deg, 
+    ${blueColors[1]},${greenColors[0]})`,
+};
 const defaultFont = {
   color: grayColors[4],
-  fontSize: '14px',
+  fontSize: '16px',
+  fontFamily: 'Roboto,Helvetica,Arial,sans-serif',
+  // fontFamily:
+  //   'medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
 };
 
 const whiteFont = {
@@ -238,8 +245,22 @@ export const cardStyles = makeStyles({
   postItem: {
     padding: 8,
   },
-  postText: { padding: 16, textAlign: 'justify' },
+  postText: {
+    paddingRight: 32,
+    paddingLeft: 16,
+    textAlign: 'justify',
+    // lineHeight: '28px',
+    // letterSpacing: '0.05em',
+    fontFamily: 'Metropolis-Regular',
+    fontSize: 20,
+    lineHeight: 1.7,
+    color: grayColors[2],
+  },
   post: { margin: 16, borderRadius: 10, ...greenBlueBkg, padding: 16 },
+  more: {
+    cursor: 'pointer',
+    color: grayColors[6],
+  },
 });
 
 export const formStyles = makeStyles({
@@ -388,5 +409,51 @@ export const buttonStyles = makeStyles({
     },
     position: 'relative',
     top: -8,
+  },
+});
+
+export const dragStyles = makeStyles({
+  dragGroup: {
+    padding: 8,
+    minHeight: 32,
+    border: '.5px solid #eee',
+    margin: 8,
+    borderRadius: 8,
+  },
+  draggingOver: {
+    ...greenBlueBkg2,
+  },
+  dragItem: {
+    margin: 4,
+    paddingLeft: 16,
+    padding: 4,
+    borderRadius: 10,
+    backgroundColor: grayColors[13],
+    overflow: 'hidden',
+    minHeight: 16,
+  },
+  draggingItem: {
+    ...greenGradientBkg,
+  },
+});
+
+export const framerStyles = makeStyles({
+  ul: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    position: 'relative',
+    width: 300,
+  },
+  li: {
+    borderRadius: 10,
+    marginBottom: 10,
+    cursor: 'pointer',
+    width: '100%',
+    height: 80,
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    position: 'relative',
   },
 });

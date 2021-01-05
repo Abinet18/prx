@@ -6,6 +6,7 @@ export type XS = boolean | OneToTen | 11 | 12;
 export type Option = {
   value: string;
   label: string;
+  group?: string;
 };
 
 // export type CheckboxValue = {
@@ -79,6 +80,7 @@ export type ProfileType = {
   mstatus: string;
   interests: string;
   skills: string;
+  picture?: string;
 };
 
 export type RouteDetail = {
@@ -117,5 +119,8 @@ export type PostType = {
   text: string;
   postedBy: string;
   postedDate: string;
-  imageAttached: any;
+  imageAttached?: any;
+  color: string;
 };
+
+export type MatchGroups = { [key: string]: { title: string; list: string[] } };

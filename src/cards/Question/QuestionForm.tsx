@@ -10,6 +10,7 @@ import { cardStyles } from '../../styles/styles';
 import QuestionInputField from './QuestionInputField';
 import AnswerOptions from './AnswerOptions';
 import { useStore } from '../../store/store';
+import MatchGroupOptions from './MatchGroupOptions';
 
 type Props = {
   path: string[];
@@ -36,6 +37,7 @@ const QuestionForm = ({ path }: Props) => {
         </FormLine>
       ))}
       <AnswerOptions path={path} />
+      <MatchGroupOptions path={path} />
     </Card>
   );
 };

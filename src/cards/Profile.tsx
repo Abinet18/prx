@@ -48,6 +48,21 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
     </div>
   );
 
+  const summary = (
+    <GridItem xs className={classes.profilequote}>
+      {viewModal || profile.summary.length <= 150 ? (
+        profile.summary
+      ) : (
+        <>
+          {profile.summary.substring(0, 150)}
+          <span className={classes.more} onClick={onView}>
+            ...more
+          </span>
+        </>
+      )}
+    </GridItem>
+  );
+
   const body = (
     <div className={viewModal ? classes.viewProfileBody : classes.profileBody}>
       <GridItem
@@ -58,9 +73,8 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
         className={
           classes.profileitem
         }>{`${profile.jtitle} at ${profile.cname}`}</GridItem>
-      <GridItem xs className={classes.profilequote}>
-        {profile.summary}
-      </GridItem>
+      {profile.picture && <img src={profile.picture} height={300} alt={''} />}
+      {summary}
       <GridItem xs className={classes.profilelist}>
         {`Interested in ${profile.interests}`}
       </GridItem>
@@ -74,8 +88,7 @@ const Profile = ({ id, onRemoveProfile, viewModal }: Props) => {
       header={header}
       xs={12}
       sm={6}
-      md={4}
-      lg={3}
+      lg={4}
       className={classes.profile}
       footer={footer}>
       {body}

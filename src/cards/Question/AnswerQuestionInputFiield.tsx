@@ -8,6 +8,7 @@ import RadioInput from '../../Inputs/RadioInput';
 import { useStore, get } from '../../store/store';
 
 import FormLine from '../FormLine';
+import { MatchDND } from '../../Views/DraggableList';
 
 type Props = {
   path: string[];
@@ -76,7 +77,13 @@ const AnswerQuestionInputField = ({ path }: Props) => {
             row
           />
         );
-
+      case 'MATCH':
+        return (
+          <MatchDND
+            matches={a || JSON.stringify(q.matchGroups)}
+            onChange={onChange}
+          />
+        );
       default:
         return (
           <TextInput

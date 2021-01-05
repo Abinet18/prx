@@ -25,6 +25,7 @@ export const profileForm: ProfileFormData = {
       options: ['Male', 'Female'],
     },
     { name: 'bdate', label: 'Birth Date', type: 'Date', default: '' },
+    { name: 'picture', label: 'Profile Picture', type: 'Image', default: '' },
     {
       name: 'jtitle',
       label: 'Job title',
@@ -161,6 +162,18 @@ export const postForm: PostFormData = {
       default: '',
       placeholder: 'Write your name and title',
     },
+    {
+      name: 'imageAttached',
+      label: 'Add Image',
+      type: 'Image',
+      default: '',
+    },
+    {
+      name: 'color',
+      label: 'Back Ground Color',
+      type: 'ColorPicker',
+      default: '',
+    },
   ],
 };
 
@@ -170,4 +183,5 @@ export const emptyPost: PostType = {
   postedBy: '',
   postedDate: '',
   imageAttached: '',
+  color: '',
 };

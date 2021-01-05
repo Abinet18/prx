@@ -10,6 +10,7 @@ type Props = {
   options: Option[];
   disableClearable?: boolean;
   onChange: (value: string) => void;
+  groupBy?: (option: Option) => string;
   placeholder?: string;
 };
 
@@ -20,6 +21,7 @@ const SelectInput = ({
   options,
   disableClearable,
   placeholder,
+  groupBy,
 }: Props) => {
   const classes = selectInputStyles();
   const selectedOption = options.find((option) => option.value === value);
@@ -32,6 +34,7 @@ const SelectInput = ({
       disableClearable={disableClearable}
       options={options}
       getOptionLabel={(option: Option) => option.label}
+      groupBy={groupBy}
       onChange={(event, option) => {
         _onChange(option);
       }}
