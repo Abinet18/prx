@@ -38,6 +38,8 @@ const SelectInput = ({
       onChange={(event, option) => {
         _onChange(option);
       }}
+      onHighlightChange={(event, option) => {
+        console.log('highlight selected',option)}}
       className={classes.root}
       renderInput={(params) => (
         <CustomTextField

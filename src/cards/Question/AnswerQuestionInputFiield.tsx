@@ -9,6 +9,7 @@ import { useStore, get } from '../../store/store';
 
 import FormLine from '../FormLine';
 import { MatchDND } from '../../Views/DraggableList';
+import MultiSelectInput from '../../Inputs/MultiSelectInput';
 
 type Props = {
   path: string[];
@@ -61,11 +62,17 @@ const AnswerQuestionInputField = ({ path }: Props) => {
         );
       case 'MULTISELECT':
         return (
-          <CheckBoxes
+          // <CheckBoxes
+          //   options={checkboxOptions}
+          //   selectedValsStr={a}
+          //   onChange={onChange}
+          //   row
+          // />
+          <MultiSelectInput
             options={checkboxOptions}
             selectedValsStr={a}
             onChange={onChange}
-            row
+            // row
           />
         );
       case 'TRUE FALSE':

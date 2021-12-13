@@ -21,14 +21,14 @@ const Header = () => {
       justify={'flex-start'}
       className={classes.pageheader}>
       <GridItem xs>Welcome</GridItem>
-      <Box display={{ xs: 'none', sm: 'block' }}>
+      <Box>
         <GridContainer xs>
           {getTopNavLinks.map((link) => (
             <HeaderLink link={link} />
           ))}
         </GridContainer>
       </Box>
-      <Box display={{ xs: 'block', sm: 'none' }}>
+      <Box>
         <GridContainer xs>
           <NavMenu />
         </GridContainer>

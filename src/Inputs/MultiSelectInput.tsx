@@ -1,4 +1,4 @@
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from '@material-ui/core/Autocomplete';
 import React from 'react';
 import { Option } from '../types/types';
 import { selectInputStyles } from '../styles/styles';
@@ -21,9 +21,14 @@ const MultiSelectInput = ({
 }: Props) => {
   const classes = selectInputStyles();
   const selectedValues = selectedValsStr.split(',');
-  const selectedOptions = options.filter((option) =>
-    selectedValues.includes(option.value),
-  );
+  const selectedOptions: Option[] = [];
+  selectedValues.forEach((o) => {
+    const option = options.find((op) => op.value === o);
+    if (option) {
+      selectedOptions.push(option);
+    }
+  });
+
   const _onChange = (values: Option[]) => {
     onChange(values.map((option) => option.value).join(','));
   };
@@ -44,6 +49,20 @@ const MultiSelectInput = ({
           label={label}
           placeholder={'Select ..'}
         />
+      )}
+      renderTags={(tagValue, getTagProps) => (
+        <>
+          {tagValue.map((option, index) => {
+            return (
+              <span>{`${option.value},`}</span>
+              // <Chip
+              //   key={option.value}
+              //   label={option.label}
+              //   {...getTagProps({ index })}
+              // />
+            );
+          })}
+        </>
       )}
       filterSelectedOptions={true}
     />

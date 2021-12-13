@@ -11,7 +11,7 @@ type Props = {
 function TabPanel(props: Props) {
   return (
     <div role='tabpanel'>
-      <Box p={3}>
+      <Box>
         <Typography>{props.children}</Typography>
       </Box>
     </div>

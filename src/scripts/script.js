@@ -60,7 +60,7 @@ const getSVGFiles = async (directoryPath, subdir) => {
       },
     );
 
-    console.log(fileNames);
+    console.log(fileNames);  
   });
 };
 

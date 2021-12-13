@@ -38,7 +38,6 @@ const GridContainer = ({
       md={md}
       lg={lg}
       direction={direction ?? 'row'}
-      justify={justify || 'flex-start'}
       alignItems={alignItems || 'flex-start'}
       className={className}
       spacing={spacing}
